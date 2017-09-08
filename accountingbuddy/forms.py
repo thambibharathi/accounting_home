@@ -16,7 +16,7 @@ class BusinessRequestForm(forms.Form):
    def __init__(self,user,*args,**kwargs):
 		super(BusinessRequestForm,self).__init__(*args,**kwargs)
 		select_user=MyProfile.objects.get(user=user)
-   		price=Pricing.objects.all().filter(pricing_region=select_user.region).filter(target=select_user.sales_partner)
+		price=Pricing.objects.all().filter(pricing_region=select_user.region).filter(target=select_user.sales_partner)
 		self.fields['license_type'].queryset=price
 		
 		
