@@ -1,0 +1,346 @@
+{% extends "base.html" %}
+{% load i18n  mezzanine_tags staticfiles%}
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block breadcrumb_wrapper %}
+{% endblock %}
+
+{% block title_wrapper %}
+{% endblock %}
+
+{% block all_content %}
+
+ <!--Slider-->
+    <section id="slide-show">
+     <div id="slider" class="sl-slider-wrapper">
+
+        <!--Slider Items-->    
+        <div class="sl-slider">
+            <!--Slider Item1-->
+            <div class="sl-slide item1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+                <div class="sl-slide-inner">
+                    <div class="container">
+                        <img class="pull-right" src="{% static "images/sample/slider/img1.png" %}" alt="" />
+                        <h2>Accounting Software</h2>
+                        <h3 class="gap">Simple and Easy To Use</h3>
+                        <a class="btn btn-large btn-transparent" href="#">Demo</a>
+                    </div>
+                </div>
+            </div>
+            <!--/Slider Item1-->
+
+            <!--Slider Item2-->
+            <div class="sl-slide item2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+                <div class="sl-slide-inner">
+                    <div class="container">
+                        <img class="pull-right" src="{% static "images/sample/slider/img2.png" %}" alt="" />
+                        <h2>Online and Offline </h2>
+                        <h3 class="gap">Can be used Offline and Online</h3>
+                        <a class="btn btn-large btn-transparent" href="#">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!--Slider Item2-->
+
+            <!--Slider Item3-->
+            <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                <div class="sl-slide-inner">
+                   <div class="container">
+                    <img class="pull-right" src="{% static "images/sample/slider/img3.png" %}" alt="" />
+                    <h2>All Features and GST Compliant </h2>
+                    <h3 class="gap">Inventory, Payroll, Manufacturing, Sales and Purchase, Barcode </h3>
+                    <a class="btn btn-large btn-transparent" href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <!--Slider Item4-->
+            <!--Slider Item4-->
+            <div class="sl-slide item3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                <div class="sl-slide-inner">
+                   <div class="container">
+                    <img class="pull-right" src="{% static "images/sample/slider/img3.png" %}" alt="" />
+                    <h2>Cost Effective  </h2>
+                    <h3 class="gap">Our Service & Pricing will keep you Smiling. </h3>
+                    <a class="btn btn-large btn-transparent" href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <!--Slider Item3-->
+
+
+    </div>
+    <!--/Slider Items-->
+
+    <!--Slider Next Prev button-->
+    <nav id="nav-arrows" class="nav-arrows">
+        <span class="nav-arrow-prev"><i class="icon-angle-left"></i></span>
+        <span class="nav-arrow-next"><i class="icon-angle-right"></i></span> 
+    </nav>
+    <!--/Slider Next Prev button-->
+
+</div>
+<!-- /slider-wrapper -->           
+</section>
+<!--/Slider-->
+<section class="main-info">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span9">
+                <h4>An Accounting Software thats Easy to Use , Flexible  enough to Adapt to your Business </h4>
+                <p class="no-margin">Be it a Clothing Store,  Supermarket, Factory , Doctor or a Professional. Its Easy to use and Customise  </p>
+            </div>
+            <div class="span3">
+                <a class="btn btn-success btn-large pull-right" href="http://accountingbuddy.org/demo">Free Demo </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Services-->
+<section id="services">
+    <div class="container">
+        <div class="center gap">
+            <h3>What We Offer</h3>
+            <p class="lead">Look at some of our Features</p>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span4">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="icon-globe icon-medium"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">User Friendly</h4>
+                        <p> Accountingbuddy is easy to use. No prior accounting experience is required. While registering just let us know the type of Busines.
+				We will set up the chart of accounts for you.</p>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="span4">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="icon-thumbs-up-alt icon-medium"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Works Online and Offline</h4>
+                        <p>No steady internet connection at your Business. Dont worry use the offline version. Transfer your Data online at the click of a button, So your updated with your Sales.
+				Yup Cloud based and Desktop Friendly</p>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="span4">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="icon-leaf icon-medium icon-rounded"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Integration</h4>
+                        <p>Your accountant doesnt want to move to Accountingbuddy. Even though its Better and Simpler. No worries easily export your data from our Accounting Software for him to work on</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="row-fluid">
+            <div class="span4">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="icon-shopping-cart icon-medium"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">GST or Cryptocurrencies</h4>
+                        <p>GST or Cryptocurrencies we are setup for both. Manage your GST compliance with ease. Invoice format setup as per GST requirements. Or watch your Bitcoin currency 
+				grow. No Hassle Accounting Software</p>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="span4">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="icon-globe icon-medium"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Multiple Business</h4>
+                        <p>Manage Mutiple Businesses in Multiple Currencies from one Accounting interface. Use Cost Centers,Inevntory Kits to manage multiple business in one interface </p>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="span4">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="icon-globe icon-medium"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">User Roles </h4>
+                        <p> Need only your HR to access payroll. Need only Sales to make Invoices. Yes we have user roles too.Create multiple users and grant access as required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--/Services-->
+
+<section id="recent-works">
+    <div class="container">
+        <div class="center">
+            <h3>Screen Shots</h3>
+            <p class="lead">Check out the screenshots Below.To get a glimpse of why our Accounting Software users are Happy. </p>
+        </div>  
+        <div class="gap"></div>
+        <ul class="gallery col-4">
+            <!--Item 1-->
+            <li>
+                <div class="preview">
+                    <img alt="https://accountingbuddy.org/static/media/uploads/lg-summary.png" src="https://accountingbuddy.org/static/media/uploads/lg-summary.png" width="100%"
+				style="max-height:200px" >
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a href="https://accountingbuddy.org/static/media/uploads/lg-summary.png"><i class="icon-link"></i></a>                          
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>Business Summary</h5>
+                </div>
+                <div id="modal-1" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="https://accountingbuddy.org/static/media/uploads/lg-summary.png" %}" alt=" " width="100%" style="max-height:400px">
+                    </div>
+                </div>                 
+            </li>
+            <!--/Item 1--> 
+
+            <!--Item 2-->
+            <li>
+                <div class="preview">
+                    <img alt="https://accountingbuddy.org/static/media/uploads/lg-sales-invoices.png" src="https://accountingbuddy.org/static/media/uploads/lg-sales-invoices.png" 
+			width="100%"	style="max-height:200px" >
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a href="https://accountingbuddy.org/static/media/uploads/lg-sales-invoices.png"><i class="icon-link"></i></a>                                
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>Simple Customisable Invoices</h5>
+                </div>
+                <div id="modal-1" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src= "https://accountingbuddy.org/static/media/uploads/lg-sales-invoices.png" alt=" " width="100%" style="max-height:400px">
+                    </div>
+                </div>                 
+            </li>
+            <!--/Item 2-->
+
+            <!--Item 3-->
+            <li>
+                <div class="preview">
+                    <img alt="https://accountingbuddy.org/static/media/uploads/lg-profit-and-loss-statement.png" 
+				src="https://accountingbuddy.org/static/media/uploads/lg-profit-and-loss-statement.png" width="100%" style="max-height:200px" >
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a href="https://accountingbuddy.org/static/media/uploads/lg-profit-and-loss-statement.png"><i class="icon-link"></i></a>                                
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>Profit and Loss Statement</h5>
+                </div>
+                <div id="modal-3" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="https://accountingbuddy.org/static/media/uploads/lg-profit-and-loss-statement.png"alt="https://accountingbuddy.org/static/media/uploads/lg-profit-and-loss-statement.png " width="100%" style="max-height:400px">
+                    </div>
+                </div>                 
+            </li>
+            <!--/Item 3--> 
+
+            <!--Item 4-->
+            <li>
+                <div class="preview">
+                    <img alt="https://accountingbuddy.org/static/media/uploads/lg-inventory-items.png" 
+			src="https://accountingbuddy.org/static/media/uploads/lg-inventory-items.png" width="100%" style="max-height:200px" >
+                    <div class="overlay">
+                    </div>
+                    <div class="links">
+                        <a href="https://accountingbuddy.org/static/media/uploads/lg-inventory-items.png"><i class="icon-link"></i></a>                                
+                    </div>
+                </div>
+                <div class="desc">
+                    <h5>Items Inventory</h5>
+                </div>
+                <div id="modal-4" class="modal hide fade">
+                    <a class="close-modal" href="javascript:;" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></a>
+                    <div class="modal-body">
+                        <img src="https://accountingbuddy.org/static/media/uploads/lg-inventory-items.png"
+				 alt="https://accountingbuddy.org/static/media/uploads/lg-inventory-items.png " width="100%" style="max-height:400px">
+                    </div>
+                </div>                 
+            </li>
+            <!--/Item 4-->               
+
+        </ul>
+    </div>
+
+</section>
+
+<section id="clients" class="main">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="clearfix">
+                    <h4 class="pull-left">BECOME A SALES PARTNER</h4>
+                    <div class="pull-right">
+                        <a class="prev" href="#myCarousel" data-slide="prev"><i class="icon-angle-left icon-large"></i></a> <a class="next" href="#myCarousel" data-slide="next"><i class="icon-angle-right icon-large"></i></a>
+                    </div>
+                </div>
+                <p>Our Sales Partners Get Exclusive Benefits. Become A Sales Partner, Its easy as using our Software.</p>
+            </div>
+            <div class="span6">
+                <div id="myCarousel" class="carousel slide clients">
+                  <!-- Carousel items -->
+                  <div class="carousel-inner">
+                    <div class="active item">
+                        <div class="row-fluid">
+                            <ul class="thumbnails">
+                             <li class="span3"><a href="https://accountingbuddy.org/sales-partners/"><img src="{% static "images/sample/clients/client4.png" %}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Carousel items -->
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+
+{% block left_wrapper %}
+{% endblock %}
+
+
+{% block main_wrapper %}
+
+
+{% endblock %}
+{% block right_wrapper %}
+{% endblock %}
+
+
+
+{% endblock %}

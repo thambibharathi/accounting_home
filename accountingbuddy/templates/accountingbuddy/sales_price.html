@@ -1,0 +1,66 @@
+{% extends "nova/base.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+{% block main %}
+
+{% if price  %}
+
+
+<table class="table table-responsive">
+<thead>
+  <tr>
+	<th>#</th>
+	<th>Plan</th>
+	<th>Scope</th>
+	<th>Annual Charges</th>
+	<th>Currency</th>
+  </tr>
+<tbody>
+{% for item in price %}
+<tr>
+  <th>{{ forloop.counter }} </th>
+  <th>{{ item.plan }} </th>
+  <th>{{ item.scope }} </th>
+  <th>{{ item.price }} </th>
+  <th>{{ item.currency }}</th>
+</tr> 
+
+{% endfor %}
+
+  
+
+</tbody>
+
+
+</table>
+
+
+
+{% endif %}
+
+
+{% if not_logged_in %}
+<h3> Please <a href="{% url 'login'  %}" > Login </a> to View Price </h3>
+
+{% endif %}
+
+
+{% endblock %}
