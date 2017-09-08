@@ -22,5 +22,28 @@
 
 {% block main %}
 
-xxxx
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+    {{ form.non_form_errors }}  {# For fromset errors  #}
+    <div  class="box-body">
+      <div class="form-group">  
+        <form enctype="multipart/form-data"  method="POST">
+ 
+             {% csrf_token %}
+          
+             
+                    {% bootstrap_form form %}
+       
+                  {% buttons %}
+
+              <button type="submit" value="Submit" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Submit
+              </button> 
+                {% endbuttons %}
+
+           
+       </form>
 {% endblock %}
