@@ -18,7 +18,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 
 from accountingbuddy.models import MyProfile, Pricing, Business_request
-from .forms import BusinessRequestForm, 
+from .forms import BusinessRequestForm 
 
 # Create your views here.
 
