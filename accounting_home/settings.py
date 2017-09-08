@@ -236,6 +236,7 @@ if DJANGO_VERSION < (1, 9):
 INSTALLED_APPS = (	
     "accountingbuddy",
     "nova",
+    "bootstrap3",	
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
