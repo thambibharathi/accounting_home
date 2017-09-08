@@ -40,7 +40,7 @@ def  pricing_india(request):
 	template_name="accountingbuddy/sales_price.html"
 	return render(request,template_name,context)
 
-class businessFormCreateView(LoginRequiredMixin,UpdateView):
+class businessFormCreateView(LoginRequiredMixin,CreateView):
 	model=Business_request
 	template_name='accountingbuddy/business_request_form.html'
 	form_class=BusinessRequestForm
