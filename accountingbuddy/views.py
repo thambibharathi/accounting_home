@@ -40,12 +40,24 @@ def  pricing_india(request):
 	template_name="accountingbuddy/sales_price.html"
 	return render(request,template_name,context)
 
-class businessFormCreateView(LoginRequiredMixin,CreateView):
-	model=Business_request
-	template_name='accountingbuddy/business_request_form.html'
-	form_class=BusinessRequestForm
-	context_obeject_name='breq'
-	success_url=reverse_lazy('accountingbuddy:pricing-india')
+@login_required
+def businessRequestFormView(request):
+    if request.method == 'POST':
+        form = BusinessRequestForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            business_name=form.cleaned_data['business_name']
+	    business_type=form.cleaned_data['business_type']
+	    license_type=form.cleaned_data['license_type']
+	    additional_detail=form.cleaned_data['additional_detail']
+	    user=request.user
+            return HttpResponseRedirect('/thanks/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = BusinessRequestForm()
+	
+    return render(request, 'business_request_form.html', {'form': form})
 	
 	
 
