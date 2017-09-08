@@ -42,7 +42,7 @@ def  pricing_india(request):
 
 @login_required
 def businessRequestFormView(request):
-    if request.method == 'POST':
+	if request.method == 'POST':
 		form = BusinessRequestForm(request.POST)
 		if form.is_valid():
 			business_name=form.cleaned_data['business_name']
@@ -53,10 +53,10 @@ def businessRequestFormView(request):
 			return HttpResponseRedirect('/thanks/')
 
     # if a GET (or any other method) we'll create a blank form
-    else:
-        form = BusinessRequestForm()
+    	else:
+        		form = BusinessRequestForm()
 	
-    return render(request, 'business_request_form.html', {'form': form})
+    	return render(request, 'business_request_form.html', {'form': form})
 	
 	
 
