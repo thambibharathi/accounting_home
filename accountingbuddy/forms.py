@@ -6,7 +6,7 @@ BUSINESS_TYPE=( ('SERVICE','SERVICES' ),('MANUFACTURING','MANUFACTURING'),('SALE
 
 class BusinessRequestForm(forms.Form):
 	business_name = forms.CharField(label='Enter Business Name', widget=forms.Textarea, help_text="Enter the Name of the business you require" )
-	business_type= forms.ChoiceField(label='Select Your Business Type', choice=BUSINESS_TYPE, help_text="If your business type is not present. Enter details in Additional info" )
+	business_type= forms.ChoiceField(label='Select Your Business Type', choices=BUSINESS_TYPE, help_text="If your business type is not present. Enter details in Additional info" )
 	license_type =forms.ModelChoiceField(label='Select the license type',queryset=Pricing.objects.none(),help_text="Check Pricing on Main Page Pricing")
 	additional_detail=forms.CharField(label='Enter any additional details', widget=forms.Textarea, help_text="Give details about your Tax Structure", required=False)
 	
