@@ -7,5 +7,5 @@ from django.views.static import serve
 app_name='accountingbuddy'
 urlpatterns=[  
 url(r'^pricing/india/$',views.pricing_india,name='pricing-india'),
-url(r'^businessrequest/submit/$',views.businessFormCreateView.as_view(),name='business-req'),
+url(r'^businessrequest/submit/$',views.businessRequestFormView,name='business-req'),
 ]
