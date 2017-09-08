@@ -15,7 +15,7 @@ class MyProfile(models.Model):
 	sales_partner=models.CharField("Sales Partner or Individual",max_length=200,choices=SALES_PARTNER_CHOICES,help_text="Select Sales Partner, only  if your intrested in  becoming a  Sales partner")
 	region=models.CharField("Select Region", max_length=200,choices=REGION_CHOICES,help_text="Select your Region")
 
-	def _str__(self):
+	def __str__(self):
 		return  "%s" % user
 
 class  Pricing(models.Model):
