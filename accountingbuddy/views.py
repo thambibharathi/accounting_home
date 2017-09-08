@@ -52,6 +52,7 @@ def businessRequestFormView(request):
 			additional_details=form.cleaned_data['additional_detail']
 			s=Business_request(user=request.user,business_name=business_name,business_type=business_type,license_type=license_type,additional_details=additional_details)
 			s.save()
+			user=request.user
 			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
 			message="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (business_name,business_type,license_type, additional_details, request.user,user.myprofile.phone_no,user.email)
 			recipients = ['keeganpatrao@gmail.com']
