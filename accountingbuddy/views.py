@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.core.mail import send_mail
 
 from accountingbuddy.models import MyProfile, Pricing, Business_request
 from .forms import BusinessRequestForm 
@@ -51,6 +52,10 @@ def businessRequestFormView(request):
 			additional_details=form.cleaned_data['additional_detail']
 			s=Business_request(user=request.user,business_name=business_name,business_type=business_type,license_type=license_type,additional_details=additional_details)
 			s.save()
+			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
+			message="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (business_name,business_type,license_type, additional_details, request.user,user.myprofile.phone_no,user.email)
+			recipients = ['keeganpatrao@gmail.com']
+			send_mail(subject, message, sender, recipients)
 			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
 	else:
 		form = BusinessRequestForm(input_user=request.user)
