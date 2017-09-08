@@ -46,12 +46,12 @@ def businessRequestFormView(request):
         form = BusinessRequestForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            business_name=form.cleaned_data['business_name']
-	    business_type=form.cleaned_data['business_type']
-	    license_type=form.cleaned_data['license_type']
-	    additional_detail=form.cleaned_data['additional_detail']
-	    user=request.user
-            return HttpResponseRedirect('/thanks/')
+		business_name=form.cleaned_data['business_name']
+		business_type=form.cleaned_data['business_type']
+		license_type=form.cleaned_data['license_type']
+		additional_detail=form.cleaned_data['additional_detail']
+		user=request.user
+		return HttpResponseRedirect('/thanks/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
