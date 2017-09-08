@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import  Business_request
+from .models import  Business_request, MyProfile
 
 BUSINESS_TYPE=( ('SERVICE','SERVICES' ),('MANUFACTURING','MANUFACTURING'),('SALES','SALES'),('PERSONAL','PERSONAL'),('SOCIETY','SOCIETY' ),('SCHOOL','SCHOOL'),('SUPER MARKER','SUPER MARKET'),)
 class BusinessRequestForm(forms.Form):
