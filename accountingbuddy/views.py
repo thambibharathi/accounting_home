@@ -51,7 +51,7 @@ def businessRequestFormView(request):
 			additional_detail=form.cleaned_data['additional_detail']
 			return HttpResponseRedirect('/thanks/')
 	else:
-		form = BusinessRequestForm(user=request.user)
+		form = BusinessRequestForm(input_user=request.user)
 	return render(request, 'business_request_form.html', {'form': form})
 	
 	
