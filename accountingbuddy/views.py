@@ -52,7 +52,7 @@ def businessRequestFormView(request):
 			user=request.user
 			return HttpResponseRedirect('/thanks/')
 	else:
-		form = BusinessRequestForm()
+		form = BusinessRequestForm(user=request.user)
 	return render(request, 'business_request_form.html', {'form': form})
 	
 	
