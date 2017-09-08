@@ -51,12 +51,9 @@ def businessRequestFormView(request):
 			additional_detail=form.cleaned_data['additional_detail']
 			user=request.user
 			return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
-    	else:
-        		form = BusinessRequestForm()
-	
-    	return render(request, 'business_request_form.html', {'form': form})
+	else:
+		form = BusinessRequestForm()
+	return render(request, 'business_request_form.html', {'form': form})
 	
 	
 
