@@ -48,7 +48,7 @@ def businessRequestFormView(request):
 			business_name=form.cleaned_data['business_name']
 			business_type=form.cleaned_data['business_type']
 			license_type=form.cleaned_data['license_type']
-			additional_detail=form.cleaned_data['additional_detail']
+			additional_details=form.cleaned_data['additional_detail']
 			s=Business_request(user=request.user,business_name=business_name,business_type=business_type,license_type=license_type,additional_details=additional_details)
 			s.save()
 			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
