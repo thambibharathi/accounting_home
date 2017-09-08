@@ -36,7 +36,11 @@ class Business_request(models.Model):
 	business_name=models.CharField("Name of Business Required",max_length=200,help_text="Enter the name of the business")
 	business_type=models.CharField("Select Business Type",max_length=200,choices=BUSINESS_TYPE,help_text="If your business type is not present,enter in additional details and select the closest type here")
 	license_type=models.ForeignKey(Pricing)
+	tax_structure=models.CharField("Tax Structure",max_length=200,help_text="Describe your Tax Structure",blank=True)
 	additional_details=models.CharField("Enter any additional details",max_length=200,blank=True)
+	sales_invoice=models.FileField(upload_to='businessReqForm',null=True,blank=True)
+	purchase_invoice=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
+	pay_slip=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
 
 	def __str__(self):
 		return  "%s  %s" % (self.user , self.business_name)	
