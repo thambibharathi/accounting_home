@@ -41,6 +41,7 @@ class Business_request(models.Model):
 	sales_invoice=models.FileField(upload_to='businessReqForm',null=True,blank=True)
 	purchase_invoice=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
 	pay_slip=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
+	talley_file=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
 
 	def __str__(self):
 		return  "%s  %s" % (self.user , self.business_name)	
