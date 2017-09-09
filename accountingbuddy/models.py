@@ -39,9 +39,9 @@ class Business_request(models.Model):
 	tax_structure=models.CharField("Tax Structure",max_length=200,help_text="Describe your Tax Structure",blank=True)
 	additional_details=models.CharField("Enter any additional details",max_length=200,blank=True)
 	sales_invoice=models.FileField(upload_to='businessReqForm',null=True,blank=True)
-	purchase_invoice=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
-	pay_slip=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
-	talley_file=models.FielField(upload_to='budinessReqForm',null=True,blank=True)
+	purchase_invoice=models.FileField(upload_to='budinessReqForm',null=True,blank=True)
+	pay_slip=models.FileField(upload_to='budinessReqForm',null=True,blank=True)
+	talley_file=models.FileField(upload_to='budinessReqForm',null=True,blank=True)
 
 	def __str__(self):
 		return  "%s  %s" % (self.user , self.business_name)	
