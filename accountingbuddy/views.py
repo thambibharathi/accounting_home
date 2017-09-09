@@ -17,6 +17,7 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
+from django.core.files.storage import FileSystemStorage
 
 from accountingbuddy.models import MyProfile, Pricing, Business_request
 from .forms import BusinessRequestForm 
@@ -44,7 +45,7 @@ def  pricing_india(request):
 @login_required
 def businessRequestFormView(request):
 	if request.method == 'POST':
-		form = BusinessRequestForm(request.FILES,data=request.POST,input_user=request.user,  )
+		form = BusinessRequestForm(data=[request.POST,request.FILES],input_user=request.user,  )
 		if form.is_valid():
 			business_name=form.cleaned_data['business_name']
 			business_type=form.cleaned_data['business_type']
