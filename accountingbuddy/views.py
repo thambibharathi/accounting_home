@@ -50,7 +50,12 @@ def businessRequestFormView(request):
 			business_type=form.cleaned_data['business_type']
 			license_type=form.cleaned_data['license_type']
 			additional_details=form.cleaned_data['additional_detail']
-			s=Business_request(user=request.user,business_name=business_name,business_type=business_type,license_type=license_type,additional_details=additional_details)
+			tax_structure=form.cleaned_data['tax_structure']
+			sales_invoice=form.cleaned_data['sales_invoice']
+			purchase_invoice=form.cleaned_data['purchase_invoice']
+			pay_slip=form.cleaned_data['pay_slip']
+			talley_file=form.cleaned_data['talley_file']
+			s=Business_request(user=request.user,business_name=business_name,business_type=business_type,license_type=license_type,additional_details=additional_details,tax_structure=tax_structure,sales_invoice=sales_invoice,purchase_invoice=purchase_invoice,pay_slip=pay_slip,talley_file=talley_file,)
 			s.save()
 			user=request.user
 			sender='info@accountingbuddy.org'
