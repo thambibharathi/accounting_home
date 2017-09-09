@@ -17,10 +17,10 @@ class BusinessRequestForm(forms.Form):
 	license_type =forms.ModelChoiceField(label='Select the license type',queryset=Pricing.objects.none(),help_text="Check Pricing on Main Page Pricing")
 	additional_detail=forms.CharField(label='Enter any additional details', widget=forms.Textarea, help_text="Give details about your Tax Structure", required=False)
 	tax_structure=forms.CharField(label='Tax Structure ', widget=forms.Textarea, help_text="Describe Your Tax Structure If Applicable",required=False)
-	sales_invoice=forms.FielField(max_length='100',validators=[file_size],help_text="Upload your present Sales Invoice if any",required=False)
-	purchase_invoice=forms.FielField(max_length='100',validators=[file_size],help_text="Upload your present Purchase Invoice if any",required=False)
-	pay_slip=forms.FielField(max_length='100',validators=[file_size],help_text="Upload your present Pay Slip if any",required=False)
-	talley_file=forms.FielField(max_length='100',validators=[file_size],help_text="Upload your present Talley Export if any",required=False)
+	sales_invoice=forms.FileField(max_length='100',validators=[file_size],help_text="Upload your present Sales Invoice if any",required=False)
+	purchase_invoice=forms.FileField(max_length='100',validators=[file_size],help_text="Upload your present Purchase Invoice if any",required=False)
+	pay_slip=forms.FileField(max_length='100',validators=[file_size],help_text="Upload your present Pay Slip if any",required=False)
+	talley_file=forms.FileField(max_length='100',validators=[file_size],help_text="Upload your present Talley Export if any",required=False)
 	
 	def __init__(self,input_user,*args,**kwargs):
 		super(BusinessRequestForm,self).__init__(*args,**kwargs)
