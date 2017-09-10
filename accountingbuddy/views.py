@@ -88,10 +88,8 @@ def businessRequestFormView(request):
 
 @login_required
 def businessRequestFormView(request):
-	
 	if request.method == 'POST':
-		s=Business_request(user=request.user)
-		form=BusinessRequestForm(request.POST,request.FILES,instance=s)
+		form=BusinessRequestForm(request.POST,request.FILES)
 		if form.is_valid():
 			form.save()
 			user=request.user
