@@ -106,13 +106,13 @@ def businessRequestFormView(request):
 			msg = EmailMultiAlternatives(subject, text_content, from_email, to)
 			msg.attach_alternative(html_content, "text/html")
 			if busreq.sales_invoice.name is not '':
-				message.attach_file(busreq.sales_invoice.path)
+				msg.attach_file(busreq.sales_invoice.path)
 			if busreq.purchase_invoice.name is not '':
-				message.attach_file(busreq.purchase_invoice.path)
+				msg.attach_file(busreq.purchase_invoice.path)
 			if busreq.pay_slip.name is not '':
-				message.attach_file(busreq.pay_slip.path)
+				msg.attach_file(busreq.pay_slip.path)
 			if busreq.talley_file.name is not '':
-				message.attach_file(busreq.talley_file.path)	
+				msg.attach_file(busreq.talley_file.path)	
 			msg.send()
 			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
 	else:
