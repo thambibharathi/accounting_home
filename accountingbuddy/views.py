@@ -103,7 +103,7 @@ def businessRequestFormView(request):
 			send_mail(subject, message, sender, recipients)
 			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
 	else:
-		form = BusinessRequestForm(instance=s)
+		form = BusinessRequestForm()
 	return render(request, 'business_request_form.html', {'form': form})
 
 
