@@ -42,7 +42,7 @@ def  pricing_india(request):
 	
 	template_name="accountingbuddy/sales_price.html"
 	return render(request,template_name,context)
-
+'''
 @login_required
 def businessRequestFormView(request):
 	if request.method == 'POST':
@@ -84,8 +84,27 @@ def businessRequestFormView(request):
 		form = BusinessRequestForm(input_user=request.user)
 	return render(request, 'business_request_form.html', {'form': form})
 	
-	
+'''
 
+@login_required
+def businessRequestFormView(request):
+	
+	if request.method == 'POST':
+		s=Business_request(user=request.user)
+		form = BusinessRequestForm(request.POST,request.FILES,instance=s)
+		if form.is_valid():
+			form.save()
+			user=request.user
+			sender='info@accountingbuddy.org'
+			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
+			message="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (business_name,business_type,license_type, additional_details, request.user,user.myprofile.phone_no,user.email)
+			recipients = ['keeganpatrao@gmail.com',]
+			recipients +=[user.email,]
+			send_mail(subject, message, sender, recipients)
+			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
+	else:
+		form = BusinessRequestForm(instance=s)
+	return render(request, 'business_request_form.html', {'form': form})
 
 
 
