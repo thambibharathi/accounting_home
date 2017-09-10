@@ -21,7 +21,7 @@ from django.core.files.storage import FileSystemStorage
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.mail import EmailMultiAlternatives
 
-from accountingbuddy.models import MyProfile, Pricing, Business_request
+from accountingbuddy.models import MyProfile, Pricing, Business_request, SendMails
 from .forms import BusinessRequestForm 
 
 # Create your views here.
@@ -47,6 +47,10 @@ def  pricing_india(request):
 
 @login_required
 def businessRequestFormView(request):
+	to=[]
+	email_obj=SendMails.objects.all()
+	for item in email_obj:
+		to.append(item.email_id)
 	if request.method == 'POST':
 		form=BusinessRequestForm(request.POST,request.FILES,request=request)
 		if form.is_valid():
@@ -59,7 +63,7 @@ def businessRequestFormView(request):
 			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
 			text_content="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (busreq.business_name,busreq.business_type,busreq.license_type, busreq.additional_details, request.user,user.myprofile.phone_no,user.email)
 			html_content=" <h4> Business Set Up Request </h4> <br> <ul> <li> Business Name : %s  </li> <li> Business Type : %s  </li> <li> License Type : %s  </li> <li> Additional Details : %s  </li><li> User : %s  </li><li> Phone : %s  </li><li> Email : %s  </li> </ul>" % (busreq.business_name,busreq.business_type,busreq.license_type, busreq.additional_details, request.user,user.myprofile.phone_no,user.email)
-			to = ['keeganpatrao@gmail.com',]
+			#to = ['keeganpatrao@gmail.com',]
 			to +=[user.email,]
 			msg = EmailMultiAlternatives(subject, text_content, from_email, to)
 			msg.attach_alternative(html_content, "text/html")
