@@ -35,7 +35,7 @@ class BusinessRequestForm(forms.Form):
 class BusinessRequestForm(ModelForm):
 	class Meta:
 		model=Business_request
-		fields=['business_name','business_type','license_type','additional_detail','tax_structure','sales_invoice','purchase_invoice','pay_slip','talley_file',]
+		fields=['business_name','business_type','license_type','additional_details','tax_structure','sales_invoice','purchase_invoice','pay_slip','talley_file',]
 		
 	def __init__(self,*args,**kwargs):
 		input_user = kwargs.pop('user',None)
