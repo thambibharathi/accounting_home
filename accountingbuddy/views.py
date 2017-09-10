@@ -46,7 +46,7 @@ def  pricing_india(request):
 @login_required
 def businessRequestFormView(request):
 	if request.method == 'POST':
-		form = BusinessRequestForm(input_user=request.user,data=request.POST,file_data=request.FILES, )
+		form = BusinessRequestForm(input_user=request.user,request.POST,request.FILES, )
 		if form.is_valid():
 			business_name=form.cleaned_data['business_name']
 			business_type=form.cleaned_data['business_type']
