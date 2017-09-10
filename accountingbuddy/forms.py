@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm , Textarea
 from django.core.exceptions import ValidationError
 
 from .models import  Business_request, MyProfile , Pricing
