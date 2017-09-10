@@ -45,3 +45,10 @@ class Business_request(models.Model):
 
 	def __str__(self):
 		return  "%s  %s" % (self.user , self.business_name)
+
+class SendMails(models.Model):
+	email_id=models.EmailField("Email Address",help_text="Emails of Business Request Will be Sent To")
+	
+	def __str__(self):
+		return " %s " self.email_id
+	
