@@ -44,4 +44,4 @@ class Business_request(models.Model):
 	talley_file=models.FileField(upload_to='businessReqForm',null=True,blank=True)
 
 	def __str__(self):
-		return  "%s  %s" % (self.user , self.business_name)	
+		return  "%s  %s" % (self.user , self.business_name)
