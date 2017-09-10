@@ -92,9 +92,9 @@ def businessRequestFormView(request):
 		form=BusinessRequestForm(request.POST,request.FILES,request=request)
 		if form.is_valid():
 			#s=Business_request(user=request.user)
-			s=form.save(commit=True)
-			s.user=request.user
-			s.save()
+			busreq=form.save(commit=False)
+			busreq.user=request.user
+			busreq.save()
 			user=request.user
 			sender='info@accountingbuddy.org'
 			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
