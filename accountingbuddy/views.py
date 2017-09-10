@@ -43,49 +43,7 @@ def  pricing_india(request):
 	
 	template_name="accountingbuddy/sales_price.html"
 	return render(request,template_name,context)
-'''
-@login_required
-def businessRequestFormView(request):
-	if request.method == 'POST':
-		form = BusinessRequestForm(request.FILES,data=request.POST,input_user=request.user,)
-		if form.is_valid():
-			business_name=form.cleaned_data['business_name']
-			business_type=form.cleaned_data['business_type']
-			license_type=form.cleaned_data['license_type']
-			additional_details=form.cleaned_data['additional_detail']
-			tax_structure=form.cleaned_data['tax_structure']
-			s=Business_request()
-			s.user=request.user
-			s.business_name=business_name
-			s.business_type=business_type
-			s.license_type=license_type
-			s.additional_details=additional_details
-			if request.FILES['sales_invoice']:
-				sales_invoice=request.FILES['sales_invoice']
-				s.sales_invoice=sales_invoice
-			if request.FILES['purchase_invoice']:
-				purchase_invoice=request.FILES['purchase_invoice']
-				s.purchase_invoice=purchase_invoice
-			if request.FILES['pay_slip']:
-				pay_slip=request.FILES['pay_slip']
-				s.pay_slip=pay_slip
-			if request.FILES['talley_file']:
-				talley_file=request.FILES['talley_file']
-				s.talley_file=talley_file
-			s.save()
-			user=request.user
-			sender='info@accountingbuddy.org'
-			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
-			message="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (business_name,business_type,license_type, additional_details, request.user,user.myprofile.phone_no,user.email)
-			recipients = ['keeganpatrao@gmail.com',]
-			recipients +=[user.email,]
-			send_mail(subject, message, sender, recipients)
-			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
-	else:
-		form = BusinessRequestForm(input_user=request.user)
-	return render(request, 'business_request_form.html', {'form': form})
-	
-'''
+
 
 @login_required
 def businessRequestFormView(request):
