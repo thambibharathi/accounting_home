@@ -16,9 +16,10 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
-from django.core.mail import send_mail
+from django.core.mail import send_mail , BadHeaderError
 from django.core.files.storage import FileSystemStorage
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.mail import EmailMultiAlternatives
 
 from accountingbuddy.models import MyProfile, Pricing, Business_request
 from .forms import BusinessRequestForm 
@@ -96,12 +97,23 @@ def businessRequestFormView(request):
 			busreq.user=request.user
 			busreq.save()
 			user=request.user
-			sender='info@accountingbuddy.org'
+			from_email='info@accountingbuddy.org'
 			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
-			message="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (busreq.business_name,busreq.business_type,busreq.license_type, busreq.additional_details, request.user,user.myprofile.phone_no,user.email)
-			recipients = ['keeganpatrao@gmail.com',]
-			recipients +=[user.email,]
-			send_mail(subject, message, sender, recipients)
+			text_content="Business Name : %s , Business Type: %s , License Type: %s, Additional Details : %s , User %s , Phone %s, Email %s" % (busreq.business_name,busreq.business_type,busreq.license_type, busreq.additional_details, request.user,user.myprofile.phone_no,user.email)
+			html_content=" <h4> Business Set Up Request </h4> <br> <ul> <li> Business Name : %s  </li> <li> Business Type : %s  </li> <li> License Type : %s  </li> <li> Additional Details : %s  </li><li> User : %s  </li><li> Phone : %s  </li><li> Email : %s  </li> </ul>" % (busreq.business_name,busreq.business_type,busreq.license_type, busreq.additional_details, request.user,user.myprofile.phone_no,user.email)
+			to = ['keeganpatrao@gmail.com',]
+			to +=[user.email,]
+			msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+			msg.attach_alternative(html_content, "text/html")
+			if busreq.sales_invoice.name is not '':
+				message.attach_file(busreq.sales_invoice.path)
+			if busreq.purchase_invoice.name is not '':
+				message.attach_file(busreq.purchase_invoice.path)
+			if busreq.pay_slip.name is not '':
+				message.attach_file(busreq.pay_slip.path)
+			if busreq.talley_file.name is not '':
+				message.attach_file(busreq.talley_file.path)	
+			msg.send()
 			return HttpResponseRedirect(reverse('accountingbuddy:thanks'))
 	else:
 		form = BusinessRequestForm(request=request)
