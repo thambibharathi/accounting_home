@@ -38,9 +38,9 @@ class BusinessRequestForm(ModelForm):
 		fields=['business_name','business_type','license_type','additional_details','tax_structure','sales_invoice','purchase_invoice','pay_slip','talley_file',]
 		
 	def __init__(self,*args,**kwargs):
-		request = kwargs.pop('request',None)
+		self.request = kwargs.pop('request',None)
 		super(BusinessRequestForm,self).__init__(*args,**kwargs)
-		select_user=MyProfile.objects.get(user=request.user)
+		select_user=MyProfile.objects.get(user=self.request.user)
 		price=Pricing.objects.all().filter(pricing_region=select_user.region).filter(target=select_user.sales_partner)
 		self.fields['license_type'].queryset=price
 		
