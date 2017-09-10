@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 
 from .models import  Business_request, MyProfile , Pricing
@@ -10,7 +11,7 @@ def file_size(value): # Check File Size
     if value.size > limit:
         raise ValidationError('File too large. Size should not exceed 2 MiB.')  
 
-
+'''
 class BusinessRequestForm(forms.Form):
 	business_name = forms.CharField(label='Enter Business Name', widget=forms.Textarea, help_text="Enter the Name of the business you require" )
 	business_type= forms.ChoiceField(label='Select Your Business Type', choices=BUSINESS_TYPE, help_text="If your business type is not present. Enter details in Additional info" )
@@ -22,14 +23,25 @@ class BusinessRequestForm(forms.Form):
 	pay_slip=forms.FileField(help_text="Upload your present Pay Slip if any",required=False)
 	talley_file=forms.FileField(help_text="Upload your present Talley Export if any",required=False)
 	
-	def __init__(self,input_user,*args,**kwargs):
+	def __init__(self,*args,**kwargs):
+		input_user = kwargs.pop('user',None)
+		super(BusinessRequestForm,self).__init__(*args,**kwargs)
+		select_user=MyProfile.objects.get(user=input_user)
+		price=Pricing.objects.all().filter(pricing_region=select_user.region).filter(target=select_user.sales_partner)
+		self.fields['license_type'].queryset=price
+		
+'''		
+
+class BusinessRequestForm(ModelForm):
+	class Meta:
+		model=Business_request
+		fields=['business_name','business_type','license_type','additional_detail','tax_structure','sales_invoice','purchase_invoice','pay_slip','talley_file',]
+		
+	def __init__(self,*args,**kwargs):
+		input_user = kwargs.pop('user',None)
 		super(BusinessRequestForm,self).__init__(*args,**kwargs)
 		select_user=MyProfile.objects.get(user=input_user)
 		price=Pricing.objects.all().filter(pricing_region=select_user.region).filter(target=select_user.sales_partner)
 		self.fields['license_type'].queryset=price
 		
 		
-
-
- 		
-   
