@@ -16,6 +16,7 @@ class BusinessRequestForm(ModelForm):
 	class Meta:
 		model=Business_request
 		fields=['business_name','business_type','license_type','additional_details','tax_structure','sales_invoice','purchase_invoice','pay_slip','talley_file',]
+		widgets = {'additional_details': Textarea(attrs={'cols': 80, 'rows': 20}),'tax_structure': Textarea(attrs={'cols': 80, 'rows': 20}) ,}
 		
 	def __init__(self,*args,**kwargs):
 		self.request = kwargs.pop('request',None)
