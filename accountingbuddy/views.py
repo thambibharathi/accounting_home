@@ -91,7 +91,8 @@ def businessRequestFormView(request):
 	if request.method == 'POST':
 		form=BusinessRequestForm(request.POST,request.FILES,request=request)
 		if form.is_valid():
-			form.save()
+			s=Business_request(user=request.user)
+			form.save(instance=s)
 			user=request.user
 			sender='info@accountingbuddy.org'
 			subject="AccountingBuddy.Org Business Setup Request Fm %s" % user.first_name
