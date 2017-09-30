@@ -356,7 +356,7 @@ ACCOUNTS_PROFILE_VIEWS_ENABLED=True  # Users are able to see their profile.
 ACCOUNTS_NO_USERNAME=True  # Does not expose username to user. Only email address.
 ACCOUNTS_VERIFICATION_REQUIRED=True # Email Verification
 ACCOUNTS_APPROVAL_REQUIRED=False    # Accounts to be verified by Amin/Staff 
-LOGIN_REDIRECT_URL='/pricing/india/'
+LOGIN_REDIRECT_URL='/accountingbuddy/pricing/india/'
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
