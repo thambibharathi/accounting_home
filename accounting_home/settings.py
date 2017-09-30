@@ -234,7 +234,8 @@ if DJANGO_VERSION < (1, 9):
 # APPLICATIONS #
 ################
 
-INSTALLED_APPS = (	
+INSTALLED_APPS = (
+    "business",	
     "accountingbuddy",
     "nova",
     "bootstrap3",	
