@@ -5,6 +5,7 @@ import os
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
+from accountingbuddy.urls import *
 
 
 
