@@ -29,7 +29,7 @@ class BusinessCreate(CreateView):
   
   def get_context_data(self,**kwargs):
     context=super(BusinessCreate,self).get_context_data(**kwargs)
-    context['button_text']='Submit'
+    context['page.form.button_text']='Submit'
     return context
       
   
