@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-
 from django.shortcuts import render, render_to_response
 from django.shortcuts import get_object_or_404 , get_list_or_404
 from django.http import HttpResponseRedirect
