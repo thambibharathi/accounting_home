@@ -83,6 +83,7 @@ urlpatterns += [
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
     url("^accountingbuddy/",include('accountingbuddy.urls')),
+    url("^dashboard/business/",include('business.urls')),
     url("^", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX
