@@ -24,7 +24,7 @@ from business.models import Business
 
 class BusinessCreate(CreateView):
   model=Business
-  template_name="pages/form.html"
+  template_name="form.html"
   fields=['name']
   
   def get_context_data(self,**kwargs):
