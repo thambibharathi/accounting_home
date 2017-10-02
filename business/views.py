@@ -27,3 +27,9 @@ class BusinessCreate(CreateView):
   template_name="pages/form.html"
   fields=['name']
   
+  def get_context_data(self,**kwargs):
+    context=super(BusinessCreate,self).get_context_data(**kwargs)
+    context['page']['form']['button_text']='Submit'
+    return context
+      
+  
