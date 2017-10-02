@@ -24,5 +24,6 @@ from business.models import Business
 
 class BusinessCreate(CreateView):
   model=Business
+  template_name="nova/pages/form.html"
   fields=['name']
   
