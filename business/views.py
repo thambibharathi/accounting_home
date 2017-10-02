@@ -24,5 +24,5 @@ from business.models import Business
 
 class BusinessCreate(CreateView):
   model=Business
-  
+  fields=['name']
   
