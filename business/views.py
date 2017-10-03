@@ -33,6 +33,7 @@ def BusinessCreateView(request):
       business_create.user=request.user
       business_create.code='code'
       business_create.save()
+      return HttpResponseRedirect(reverse('accountingbuddy:pricing-india'))
   else:
     form=BusinessCreateForm()
   return render(request,'form.html',{'form':form})
