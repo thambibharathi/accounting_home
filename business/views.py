@@ -23,10 +23,20 @@ from django.core.mail import EmailMultiAlternatives
 from business.models import Business
 from business.forms import BusinessCreateForm
 
-class BusinessCreate(CreateView):
-  model=Business
-  template_name="form.html"
-  form_class=BusinessCreateForm
+  
+@login_required  
+def BusinessCreateView(request):
+  if request.method=="POST":
+    form=BusinessCreateForm(request.POST,request.FILES,request=request)
+    if form.is_valid():
+      business_create=form.save(commit=False)
+      business_create.user=request.user
+      business_create.save()
+    else:
+      form=BusinessCreateForm(request=request)
+  return (request,'form.html',{'form':form})
+      
+  
   
       
   
