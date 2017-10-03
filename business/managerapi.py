@@ -23,7 +23,7 @@ ROOT_URL='https://users.accountingbuddy.org'
 class manager_browser:
     ''' Browser Object to move through links where API is not
         provided'''
-    def __init__(self,root_url,user):
+    def __init__(self,root_url=ROOT_URL,user=USER_NAME):
         self.browser=RoboBrowser()
         self.browser.open(root_url+'/login')
         form=self.browser.get_form()
@@ -53,7 +53,7 @@ class manager_browser:
         until the tabs are updated atleast one. We need to activate all tabs in order to get the api
         to work. Once the API is working, customer can then modify it through the UI.
         '''
-        mb=manager_browser(root_url,user)
+        mb=manager_browser(root_url=ROOT_URL,user=USER_NAME)
         business_link=mb.browser.get_link(text=self.name)
         mb.browser.follow_link(business_link)
         custimise_business_link=mb.browser.get_link(text='Customize')
