@@ -9,10 +9,12 @@ class BusinessCreateForm(ModelForm):
     model=Business
     fields=['name']
     
+    '''
     def __init__(self,*args,**kwargs):
       self.request=kwargs.pop('request',None)
       super(BusinessCreateForm,self).__init__(*args,**kwargs)
       self.fields['user']=request.user
       self.fields['code']='code'
+      '''
       
 
