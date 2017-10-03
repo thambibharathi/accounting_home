@@ -27,15 +27,15 @@ from business.forms import BusinessCreateForm
 @login_required  
 def BusinessCreateView(request):
   if request.method=="POST":
-    form=BusinessCreateForm(request.POST,request.FILES,request=request)
+    form=BusinessCreateForm(request.POST,request.FILES)
     if form.is_valid():
       business_create=form.save(commit=False)
       business_create.user=request.user
       business_create.code='code'
       business_create.save()
-     else:
-      form=BusinessCreateForm(request=request)
-   return (request,'form.html',{'form':form})
+    else:
+      form=BusinessCreateForm()
+  return (request,'form.html',{'form':form})
       
   
   
