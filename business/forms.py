@@ -8,6 +8,12 @@ class BusinessCreateForm(ModelForm):
   class Meta:
     model=Business
     fields=['name']
+  def save(self,user):
+    bus=super(BusinessCreateForm,self).save(commit=False)
+    bus.user=user
+    bus.code='code'
+    bus.save()
+    return bus
     
     '''
     def __init__(self,*args,**kwargs):
