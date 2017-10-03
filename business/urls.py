@@ -4,7 +4,6 @@ from django.conf import settings
 from django.views.static import serve
 from django.views.generic import TemplateView
 
-from business.views import BusinessCreateView
 
 app_name='business'
 urlpatterns=[  
