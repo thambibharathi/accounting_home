@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 from .models import  Business
 
-Class BusinessCreateForm(ModelForm):
+class BusinessCreateForm(ModelForm):
   class Meta:
     model=Business
     fields=['name']
