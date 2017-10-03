@@ -21,15 +21,12 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.mail import EmailMultiAlternatives
 
 from business.models import Business
+from business.forms import BusinessCreateForm
 
 class BusinessCreate(CreateView):
   model=Business
   template_name="form.html"
-  fields=['name']
+  form="BusinessCreateForm"
   
-  def get_context_data(self,**kwargs):
-    context=super(BusinessCreate,self).get_context_data(**kwargs)
-    context['page.form.button_text']='Submit'
-    return context
       
   
