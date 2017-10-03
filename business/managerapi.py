@@ -43,8 +43,8 @@ class manager_browser:
         self.browser.follow_link(link)
         url=ROOT_URL+'/create-business'
         data={'Name':self.name}
-        response=self.browser.open(url,method='POST',data=data)
-        return response
+        self.browser.open(url,method='POST',data=data)
+        return self.browser.response.text
 
 
     def  activate_tabs(self):
