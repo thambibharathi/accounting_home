@@ -33,8 +33,8 @@ def BusinessCreateView(request):
       business_create.user=request.user
       business_create.code='code'
       business_create.save()
-    else:
-      form=BusinessCreateForm()
+  else:
+    form=BusinessCreateForm()
   return (request,'form.html',{'form':form})
       
   
