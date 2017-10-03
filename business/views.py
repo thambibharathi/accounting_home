@@ -26,7 +26,7 @@ from business.forms import BusinessCreateForm
 class BusinessCreate(CreateView):
   model=Business
   template_name="form.html"
-  form="BusinessCreateForm"
+  form_class="BusinessCreateForm"
   
       
   
