@@ -31,6 +31,7 @@ def BusinessCreateView(request):
     if form.is_valid():
       business_create=form.save(commit=False)
       business_create.user=request.user
+      business_create.code='code'
       business_create.save()
      else:
       form=BusinessCreateForm(request=request)
