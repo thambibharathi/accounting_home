@@ -35,7 +35,7 @@ def BusinessCreateView(request):
       business_create.save()
   else:
     form=BusinessCreateForm()
-  return (request,'form.html',{'form':form})
+  return render(request,'form.html',{'form':form})
       
   
   
