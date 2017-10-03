@@ -7,6 +7,7 @@
 # Requires python 2.7.11 or up
 
 """API calling script for Manager.io."""
+import accounting_home.settings as sett
 from robobrowser import RoboBrowser
 import requests
 import argparse
@@ -16,7 +17,7 @@ from threading import Thread
 from bs4 import BeautifulSoup
 
 USER_NAME='administrator'
-PASSWORD='ancitconsulting'
+PASSWORD=sett.PASS
 ROOT_URL='https://users.accountingbuddy.org'
 
 class manager_browser:
