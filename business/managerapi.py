@@ -16,7 +16,7 @@ from threading import Thread
 from bs4 import BeautifulSoup
 
 USER_NAME='administrator'
-PASSWORD='ENTER PASSWORD HERE'
+PASSWORD='ancitconsulting'
 ROOT_URL='https://users.accountingbuddy.org'
 
 class manager_browser:
