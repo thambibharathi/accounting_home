@@ -35,7 +35,7 @@ def BusinessCreateView(request):
       #create the business in Manager
       bus=manager_browser()
       name=form.cleaned_data['name']
-      code=bus.create_business(name='name')
+      code=bus.create_business(name=name)
       #completed creating the business
       business_create.code=code
       business_create.save()
