@@ -23,6 +23,7 @@ from django.core.mail import EmailMultiAlternatives
 from business.models import Business
 from business.forms import BusinessCreateForm
 
+from business.managerapi import manager_browser, manager_object, USER_NAME,PASSWORD,ROOT_URL
   
 @login_required  
 def BusinessCreateView(request):
@@ -31,7 +32,12 @@ def BusinessCreateView(request):
     if form.is_valid():
       business_create=form.save(commit=False)
       business_create.user=request.user
-      business_create.code='code'
+      #create the business in Manager
+      bus=manager_browser()
+      name=form.cleaned_data['name']
+      code=bus.create_business(name='name')
+      #completed creating the business
+      business_create.code=code
       business_create.save()
       return HttpResponseRedirect(reverse('accountingbuddy:pricing-india'))
   else:
