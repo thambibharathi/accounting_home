@@ -38,6 +38,11 @@ def BusinessCreateView(request):
       code=bus.create_business(name=name)
       bus.activate_tabs()
       #completed creating the business
+      #Adding user to business
+      user_link=bus.browser.get_link(text='users')
+      bus.browser.follow_link(user_link)
+      user_name_link=bus.browser.get_link('keegan')
+      #completed adding user
       business_create.code=code
       business_create.save()
       return HttpResponseRedirect(reverse('accountingbuddy:pricing-india'))
