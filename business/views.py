@@ -24,6 +24,7 @@ from business.models import Business
 from business.forms import BusinessCreateForm
 
 from business.managerapi import manager_browser, manager_object, USER_NAME,PASSWORD,ROOT_URL
+from accountingbuddy.models import MyProfile
   
 @login_required  
 def BusinessCreateView(request):
@@ -41,7 +42,11 @@ def BusinessCreateView(request):
       #Adding user to business
       user_link=bus.browser.get_link(text='users')
       bus.browser.follow_link(user_link)
-      user_name_link=bus.browser.get_link('keegan')
+      select_user=MyProfile.objects.get(user=self.request.user)
+      user_name=select_user.user.username
+      usr_name_link=bus.browser.get_link(text=user_name)
+      bus.browser.follow_link(usr_name_link)
+      
       #completed adding user
       business_create.code=code
       business_create.save()
