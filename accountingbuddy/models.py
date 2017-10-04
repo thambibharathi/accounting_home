@@ -16,7 +16,7 @@ class MyProfile(models.Model):
 	region=models.CharField("Select Region", max_length=200,choices=REGION_CHOICES,help_text="Select your Region")
 
 	def __str__(self):
-		return  "%s" % user
+		return  "%s" % self.user
 
 class  Pricing(models.Model):
 	PLAN_CHOICES=(('INDIVIDUAL','INDIVIDUAL'),('SILVER','SILVER'),('GOLD','GOLD'),('DIAMOND','DIAMOND'),)
