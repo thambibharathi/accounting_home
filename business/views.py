@@ -46,7 +46,11 @@ def BusinessCreateView(request):
       user_name=select_user.user.username
       usr_name_link=bus.browser.get_link(text=user_name)
       bus.browser.follow_link(usr_name_link)
-      
+      frm=bus.browser.get_form()
+      frm_bus_initial= frm['Businesses'].value
+      frm['Businesses'].append(code)
+      frm['Delete']=''
+      bus.browser.submit_form(frm)
       #completed adding user
       business_create.code=code
       business_create.save()
