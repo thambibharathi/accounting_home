@@ -346,11 +346,11 @@ else:
     set_dynamic_settings(globals())
 
 
-#SSL Settings Certbot
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#SECURE_SSL_REDIRECT ="True"
-#SESSION_COOKIE_SECURE = "True"
-#CSRF_COOKIE_SECURE ="True"
+SSL Settings Certbot
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT ="True"
+SESSION_COOKIE_SECURE = "True"
+CSRF_COOKIE_SECURE ="True"
 
 ACCOUNTS_PROFILE_FORM_CLASS = "accountingbuddy.forms.MyCustomProfileForm"
 ACCOUNTS_PROFILE_MODEL="accountingbuddy.MyProfile"
