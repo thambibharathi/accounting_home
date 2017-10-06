@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm , Textarea
 from django.core.exceptions import ValidationError
+from mezzanine.accounts.forms import ProfileForm
 
 from .models import  Business_request, MyProfile , Pricing
 
@@ -26,3 +27,10 @@ class BusinessRequestForm(ModelForm):
 		self.fields['license_type'].queryset=price
 		
 		
+class MyCustomProfileForm(ProfileForm):
+    def save(self, *args, **kwargs):
+        user = super(MyCustomProfileForm, self).save(*args, **kwargs)
+        if self._signup:
+            pass=self.cleaned_data.get('password1')
+	    print(pass)
+        return user
