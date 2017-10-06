@@ -40,7 +40,9 @@ def BusinessCreateView(request):
       bus.activate_tabs()
       #completed creating the business
       #Adding user to business
-      bus.add_bus_user(req_user=request.user,code=code)
+      select_user=MyProfile.objects.get(user=request.user)
+      user_name=select_user.user.username
+      bus.add_bus_user(req_user=user_name,code=code)
       #completed adding user
       business_create.code=code
       business_create.save()
