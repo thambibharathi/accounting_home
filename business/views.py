@@ -41,7 +41,7 @@ def BusinessCreateView(request):
       #completed creating the business
       #Adding user to business
       select_user=MyProfile.objects.get(user=request.user)
-      user_name=select_user.user.username
+      user_name=select_user.user.email
       bus.add_bus_user(req_user=user_name,code=code)
       #completed adding user
       business_create.code=code
