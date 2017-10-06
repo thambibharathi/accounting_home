@@ -31,6 +31,6 @@ class MyCustomProfileForm(ProfileForm):
     def save(self, *args, **kwargs):
         user = super(MyCustomProfileForm, self).save(*args, **kwargs)
         if self._signup:
-            pass=self.cleaned_data.get('password1')
-	    print(pass)
+            passwd=self.cleaned_data.get('password1')
+	    print(passwd)
         return user
