@@ -40,17 +40,7 @@ def BusinessCreateView(request):
       bus.activate_tabs()
       #completed creating the business
       #Adding user to business
-      user_link=bus.browser.get_link(text='users')
-      bus.browser.follow_link(user_link)
-      select_user=MyProfile.objects.get(user=self.request.user)
-      user_name=select_user.user.username
-      usr_name_link=bus.browser.get_link(text=user_name)
-      bus.browser.follow_link(usr_name_link)
-      frm=bus.browser.get_form()
-      frm_bus_initial= frm['Businesses'].value
-      frm['Businesses'].append(code)
-      frm['Delete']=''
-      bus.browser.submit_form(frm)
+      bus.add_bus_user(req_user=self.request.user,code=code)
       #completed adding user
       business_create.code=code
       business_create.save()
