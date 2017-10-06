@@ -30,7 +30,7 @@ class BusinessRequestForm(ModelForm):
 class MyCustomProfileForm(ProfileForm):
     def save(self, *args, **kwargs):
         user = super(MyCustomProfileForm, self).save(*args, **kwargs)
-        if self._signup:
+	if self._signup:
 		passwd=self.cleaned_data.get('password1')
 		print(passwd)
-        return user
+	return user
