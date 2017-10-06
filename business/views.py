@@ -50,7 +50,21 @@ def BusinessCreateView(request):
   else:
     form=BusinessCreateForm()
   return render(request,'form.html',{'form':form})
-      
+
+@login_required
+class BusinessListView(LoginRequiredMixin,generic.ListView):
+  template_name='business/list.html'
+  context_object_name='business'
+  paginate_by=10
+  
+  def get_queryset(self):
+    if self.request.user.is_staff:
+      return Business.objects.all()
+    else:
+      return get_list_or_404(Business,user=self.request.user)
+  
+    
+    
   
   
       
