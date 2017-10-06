@@ -80,14 +80,16 @@ class manager_browser:
         mb=manager_browser(root_url=ROOT_URL,user=USER_NAME)
         user_link=mb.browser.get_link(text='users')
         mb.browser.follow_link(user_link)
-        select_user=MyProfile.objects.get(user=req_user)
-        user_name=select_user.user.username
-        usr_name_link=mb.browser.get_link(text=user_name)
+        usr_name_link=mb.browser.get_link(text=req_user)
+        print(usr_name_link)
         mb.browser.follow_link(usr_name_link)
+        mb.browser.url
         frm=mb.browser.get_form()
+        print("Initial Form",frm)
         frm_bus_initial= frm['Businesses'].value
         frm['Businesses'].append(code)
         frm['Delete']=''
+        print("Before submitting from",frm)
         mb.browser.submit_form(frm)
         return mb.browser.response
                    
