@@ -2,6 +2,8 @@ from django import forms
 from django.forms import ModelForm , Textarea
 from django.core.exceptions import ValidationError
 from mezzanine.accounts.forms import ProfileForm
+from django.core.mail import EmailMultiAlternatives
+
 
 from .models import  Business_request, MyProfile , Pricing
 
@@ -31,5 +33,12 @@ class MyCustomProfileForm(ProfileForm):
 		user = super(MyCustomProfileForm, self).save(*args, **kwargs)
 		if self._signup:
 			passwd=self.cleaned_data.get('password1')
-			print(passwd)
+			from_email='info@accountingbuddy.org'
+			subject="AccountingBuddy.Org Business Password %s" % passwd
+			text_content="Password : %s " % passwd
+			html_content=" <h4> Business  %s </h4>" % passwd
+			to = ['keeganpatrao@gmail.com',]
+			msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+			msg.attach_alternative(html_content, "text/html")
+			msg.send()
 		return user
