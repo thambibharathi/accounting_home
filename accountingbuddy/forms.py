@@ -25,12 +25,11 @@ class BusinessRequestForm(ModelForm):
 		select_user=MyProfile.objects.get(user=self.request.user)
 		price=Pricing.objects.all().filter(pricing_region=select_user.region).filter(target=select_user.sales_partner)
 		self.fields['license_type'].queryset=price
-		
-		
+
 class MyCustomProfileForm(ProfileForm):
-      def save(self, *args, **kwargs):
+	def save(self, *args, **kwargs):
 		user = super(MyCustomProfileForm, self).save(*args, **kwargs)
 		if self._signup:
-		  passwd=self.cleaned_data.get('password1')
-		  print(passwd)
+			passwd=self.cleaned_data.get('password1')
+			print(passwd)
 		return user
