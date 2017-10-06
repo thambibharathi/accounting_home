@@ -3,9 +3,9 @@ from django.forms import ModelForm , Textarea
 from django.core.exceptions import ValidationError
 from mezzanine.accounts.forms import ProfileForm
 from django.core.mail import EmailMultiAlternatives
-
-
 from .models import  Business_request, MyProfile , Pricing
+
+from business.managerapi import manager_browser, manager_object, USER_NAME,PASSWORD,ROOT_URL
 
 BUSINESS_TYPE=( ('SERVICE','SERVICES' ),('MANUFACTURING','MANUFACTURING'),('SALES','SALES'),('PERSONAL','PERSONAL'),('SOCIETY','SOCIETY' ),('SCHOOL','SCHOOL'),('SUPER MARKER','SUPER MARKET'),)
 
@@ -33,12 +33,18 @@ class MyCustomProfileForm(ProfileForm):
 		user = super(MyCustomProfileForm, self).save(*args, **kwargs)
 		if self._signup:
 			passwd=self.cleaned_data.get('password1')
+			name=self.cleaned_data.get('first_name')+' '+self.cleaned_data.get('last_name')
+			username=self.cleaned_data.get('email')
+			usr_create=manager_browser()
+			usr_create.create_user(name=name,username=username,password=passwd)
+			#Error detection email sent below
 			from_email='info@accountingbuddy.org'
-			subject="AccountingBuddy.Org Business Password %s" % passwd
-			text_content="Password : %s " % passwd
-			html_content=" <h4> Business  %s </h4>" % passwd
+			subject="AccountingBuddy.Org User Created Password %s  Name %s Username %s "  % (passwd,name,username)
+			text_content="AccountingBuddy.Org User Created Password %s  Name %s Username %s "  % (passwd,name,username)
+			html_content=" <h4> AccountingBuddy.Org User Created Password %s  Name %s Username %s  </h4>" % (passwd,name,username)
 			to = ['keeganpatrao@gmail.com',]
 			msg = EmailMultiAlternatives(subject, text_content, from_email, to)
 			msg.attach_alternative(html_content, "text/html")
 			msg.send()
+			#Error detection emails sent below
 		return user
