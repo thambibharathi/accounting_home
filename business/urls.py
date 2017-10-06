@@ -8,4 +8,5 @@ from django.views.generic import TemplateView
 app_name='business'
 urlpatterns=[  
 url(r'^business/create/$',views.BusinessCreateView,name='business-create'),
+url(r'^business/list/$',views.BusinessListView,name='business-list'),  
 ]
