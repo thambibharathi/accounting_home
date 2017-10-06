@@ -352,6 +352,7 @@ SECURE_SSL_REDIRECT ="True"
 SESSION_COOKIE_SECURE = "True"
 CSRF_COOKIE_SECURE ="True"
 
+ACCOUNTS_PROFILE_FORM_CLASS = "accountingbuddy.forms.MyCustomProfileForm"
 ACCOUNTS_PROFILE_MODEL="accountingbuddy.MyProfile"
 ACCOUNTS_PROFILE_VIEWS_ENABLED=True  # Users are able to see their profile.
 ACCOUNTS_NO_USERNAME=True  # Does not expose username to user. Only email address.
