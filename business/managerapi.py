@@ -92,8 +92,25 @@ class manager_browser:
         print("Before submitting from",frm)
         mb.browser.submit_form(frm)
         return mb.browser.response
-                   
-
+    
+    def create_user(self,name,username,password):
+        name=name
+        username=username
+        password=password
+        mb=manager_browser(root_url=ROOT_URL,user=USER_NAME)
+        user_link=mb.browser.get_link(text='users')
+        mb.browser.follow_link(user_link)
+        new_usr_link=mb.browser.get_link(text='new user')
+        mb.browser.follow_link(new_usr_link)
+        frm=mb.browser.get_form()
+        frm['Name']=name
+        frm['Username']=username
+        frm['Password']=password
+        frm['Type']='Restricted'
+        frm['Guides']='Hidden'
+        mb.browser.submit_form(frm)
+        return mb.browser.response
+        
 class manager_object:
     """Represents the info from the the manager.io."""
 
