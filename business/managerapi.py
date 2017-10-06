@@ -32,7 +32,6 @@ class manager_browser:
         self.browser.submit_form(form)
         self.name=None
         self.data=None
-        self.code=None
         
 
     def create_business(self,name=None):
@@ -45,8 +44,7 @@ class manager_browser:
         url=ROOT_URL+'/create-business'
         data={'Name':self.name}
         self.browser.open(url,method='POST',data=data)
-        self.code=self.browser.response.text
-        return self.code
+        return self.browser.response.text
 
 
     def  activate_tabs(self):
@@ -78,7 +76,7 @@ class manager_browser:
         mb.browser.session.post(mb.browser.url,data=ndata)
         return mb
     
-    def add_bus_user(self,req_user=None):
+    def add_bus_user(self,req_user=None,code=None):
         mb=manager_browser(root_url=ROOT_URL,user=USER_NAME)
         user_link=mb.browser.get_link(text='users')
         mb.browser.follow_link(user_link)
@@ -88,13 +86,11 @@ class manager_browser:
         mb.browser.follow_link(usr_name_link)
         frm=mb.browser.get_form()
         frm_bus_initial= frm['Businesses'].value
-        frm['Businesses'].append(self.code)
+        frm['Businesses'].append(code)
         frm['Delete']=''
         mb.browser.submit_form(frm)
         return mb.browser.response
-        
-                    
-        
+                   
 
 class manager_object:
     """Represents the info from the the manager.io."""
