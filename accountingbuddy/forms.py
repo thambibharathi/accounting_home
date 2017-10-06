@@ -36,7 +36,9 @@ class MyCustomProfileForm(ProfileForm):
 			name=self.cleaned_data.get('first_name')+' '+self.cleaned_data.get('last_name')
 			username=self.cleaned_data.get('email')
 			usr_create=manager_browser()
-			usr_create.create_user(name=name,username=username,password=passwd)
+			#using email address for Name also. Which will assist in locating the user easily
+			#when creating a business (business.managerapi)
+			usr_create.create_user(name=username,username=username,password=passwd)
 			#Error detection email sent below
 			from_email='info@accountingbuddy.org'
 			subject="AccountingBuddy.Org User Created Password %s  Name %s Username %s "  % (passwd,name,username)
