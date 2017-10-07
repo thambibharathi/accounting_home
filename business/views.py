@@ -52,7 +52,7 @@ def BusinessCreateView(request):
     form=BusinessCreateForm()
   return render(request,'form.html',{'form':form})
 
-class BusinessListView(generic.ListView):
+class BusinessListView(LoginRequiredMixin, generic.ListView):
   template_name='list.html'
   context_object_name='business'
   paginate_by=10
