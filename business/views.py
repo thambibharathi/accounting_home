@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import UpdateView , CreateView, DeleteView
+from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.utils import timezone
 from django.template import loader
@@ -52,7 +53,7 @@ def BusinessCreateView(request):
   return render(request,'form.html',{'form':form})
 
 @login_required
-class BusinessListView(LoginRequiredMixin,generic.ListView):
+class BusinessListView(LoginRequiredMixin,ListView):
   template_name='business/list.html'
   context_object_name='business'
   paginate_by=10
