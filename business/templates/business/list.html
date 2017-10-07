@@ -21,7 +21,11 @@
 
 {% block main %}
 
-<h3> List of Businesses </h3>
+<h3> List of Businesses under your Account </h3>
+<p> To Login to your Business. Please go to <a href="https://users.accountingbuddy.org/login"> Accounts </a> 
+     and login with your Email address as user name and password as password </p>
+
+<p> If your not familiar with Accounting and need to Customise the Software to your Business, Please fill the <a href={% url 'accountingbuddy:business-req'  %}> </p> 
 
 {% for item in business %}
 
