@@ -9,5 +9,5 @@ from business.views import BusinessListView
 app_name='business'
 urlpatterns=[  
 url(r'^business/create/$',views.BusinessCreateView,name='business-create'),
-url(r'^business/list/$',BusinessListView.as_view(),name='business-list'),  
+url(r'^business/list/$',views.BusinessListView.as_view(),name='business-list'),  
 ]
