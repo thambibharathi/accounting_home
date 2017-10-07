@@ -53,7 +53,7 @@ def BusinessCreateView(request):
   return render(request,'form.html',{'form':form})
 
 class BusinessListView(generic.ListView):
-  template_name='business/list.html'
+  template_name='list.html'
   context_object_name='business'
   paginate_by=10
   
