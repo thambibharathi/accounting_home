@@ -12,8 +12,11 @@ class Business(models.Model):
     return "%s" % self.name
  
 class BusinessDetails(models.Model):
-  BusinessContactInformation=models.CharField("Business Contact details", max_length=200)
-  BusinessIdentifier=models.CharField("Business Identifier",max_length=200)
+  BusinessName=models.CharField("Business Name",max_length=200,null=True,blank=True)
+  BusinessContactInformation=models.CharField("Business Contact details", max_length=200,null=True,blank=True)
+  BusinessIdentifier=models.CharField("Business Identifier",max_length=200,null=True,blank=True)
+  
+  
   
   
   
