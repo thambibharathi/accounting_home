@@ -10,6 +10,12 @@ class Business(models.Model):
 
   def __str__(self):
     return "%s" % self.name
+ 
+class BusinessDetails(models.Model):
+  BusinessContactInformation=models.CharField("Business Contact details", max_length=200)
+  BusinessIdentifier=models.CharField("Business Identifier",max_length=200)
+  
+  
   
   
   
