@@ -12,9 +12,18 @@ class Business(models.Model):
     return "%s" % self.name
  
 class BusinessDetails(models.Model):
-  BusinessName=models.CharField("Business Name",max_length=200,null=True,blank=True)
-  BusinessContactInformation=models.CharField("Business Contact details", max_length=200,null=True,blank=True)
-  BusinessIdentifier=models.CharField("Business Identifier",max_length=200,null=True,blank=True)
+  businessName=models.ForeignKey(Business)
+  businessContactInformation=models.CharField("Business Contact details", max_length=200,null=True,blank=True)
+  businessIdentifier=models.CharField("Business Identifier",max_length=200,null=True,blank=True)
+  
+class BusinessCustomer(models.Model):
+  name=models.CharField("Customer Name",max_length=200,null=True,blank=True)
+  billingAddress=models.TextField("Billing Address",null=True,blank=True)
+  email=models.CharField("Email",max_length=200,null=True,blank=True)
+  businessIdentifier=models.CharField("Business Identifier",max_length=200,null=True,null=True)
+  code=models.CharField("Customer Code",max_length=200,null=True,blank=True)
+  
+  
   
   
   
