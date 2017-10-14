@@ -10,7 +10,7 @@ class Business(models.Model):
 
   def __str__(self):
     return "%s" % self.name
- '''
+'''
 class BusinessDetails(models.Model):
   businessName=models.ForeignKey(Business)
   businessContactInformation=models.CharField("Business Contact details", max_length=200,null=True,blank=True)
@@ -22,7 +22,7 @@ class BusinessCustomer(models.Model):
   email=models.CharField("Email",max_length=200,null=True,blank=True)
   businessIdentifier=models.CharField("Business Identifier",max_length=200,null=True,null=True)
   code=models.CharField("Customer Code",max_length=200,null=True,blank=True)
-  '''
+'''
   
   
   
