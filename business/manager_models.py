@@ -73,8 +73,8 @@ class SalesInvLine:
       self.discount=None
       self.trackingCode=None
       self.customFields=None
-      
-   def __str__(self):
+    
+    def __str__(self):
       return self.description
       
  class TaxCode:
@@ -83,12 +83,18 @@ class SalesInvLine:
     self.components=None
     self.taxRate=None
     self.taxRateType=None
-    
+  
+  def __str__(self):
+    return self.name
+  
  class TaxCodeComponent:
   def __init__(self):
     self.name=None
     self.rate=None
     self.account=None
+    
+  def __str__(self):
+    return self.name
     
    
     
