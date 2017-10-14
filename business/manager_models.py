@@ -63,7 +63,7 @@ class SalesInvoice:
       return self.reference
 
 class SalesInvLine:
-    def __init__(self):
+   def __init__(self):
       self.description=None
       self.account=None
       self.taxCode=None
@@ -74,27 +74,27 @@ class SalesInvLine:
       self.trackingCode=None
       self.customFields=None
     
-    def __str__(self):
+   def __str__(self):
       return self.description
       
- class TaxCode:
-  def __init__(self):
-    self.name=None
-    self.components=None
-    self.taxRate=None
-    self.taxRateType=None
+class TaxCode:
+   def __init__(self):
+      self.name=None
+      self.components=None
+      self.taxRate=None
+      self.taxRateType=None
   
-  def __str__(self):
-    return self.name
+   def __str__(self):
+      return self.name
   
- class TaxCodeComponent:
-  def __init__(self):
-    self.name=None
-    self.rate=None
-    self.account=None
+class TaxCodeComponent:
+   def __init__(self):
+      self.name=None
+      self.rate=None
+      self.account=None
     
-  def __str__(self):
-    return self.name
+   def __str__(self):
+      return self.name
     
    
     
