@@ -19,7 +19,7 @@ class CustomerDetails:
     self.fax=None
     self.mobile=None
     self.notes=None
-    self.customFields=dict()
+    self.customFields=None
     self.creditLimit=None
     self.startingBalanceType=None
     
@@ -35,7 +35,7 @@ class SupplierDetails:
     self.mobile=None
     self.notes=None
     self.address=None
-    self.customFields=dict()
+    self.customFields=None
     self.code=None
     self.creditLimit=None
     
@@ -51,6 +51,13 @@ class SalesInvoice:
       self.lines=None
       self.dueDate=None
       self.discount=None
+      self.amountsIncludeTax=None
+      self.roundingMethod=None
+      self.dueDateType=None
+      self.dueDateDays=None
+      self.latePaymentFees=None
+      self.latePaymentFeesPercentage=None
+      self.rounding=None
       
    def __str__(self):
       return self.reference
@@ -61,12 +68,29 @@ class SalesInvLine:
       self.account=None
       self.taxCode=None
       self.qty=None
+      self.item=None
       self.amount=None
       self.discount=None
-      self.customFields=dict()
+      self.trackingCode=None
+      self.customFields=None
       
    def __str__(self):
       return self.description
       
-      
+ class TaxCode:
+  def __init__(self):
+    self.name=None
+    self.components=None
+    self.taxRate=None
+    self.taxRateType=None
+    
+ class TaxCodeComponent:
+  def __init__(self):
+    self.name=None
+    self.rate=None
+    self.account=None
+    
+   
+    
+ 
     
