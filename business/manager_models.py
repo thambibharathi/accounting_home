@@ -8,20 +8,21 @@ class BusinessDetails:
     return self.tradingName
     
 class CustomerDetails:
-  def __init__(self):
-    self.name=None
-    self.billingAddress=None
-    self.email=None
-    self.businessIdentifier=None
-    self.code=None
-    self.startingBalanceType=None
-    self.telephone=None
-    self.fax=None
-    self.mobile=None
-    self.notes=None
-    self.customFields=None
-    self.creditLimit=None
-    self.startingBalanceType=None
+  def __init__(self,customer=None):
+    customer=customer
+    self.name=customer.get('Name',None)
+    self.billingAddress=customer.get('BillingAddress',None)
+    self.email=customer.get('Email',None)
+    self.businessIdentifier=customer.get('BusinessIdentifier',None)
+    self.code=customer.get('Code',None)
+    self.startingBalanceType=customer.get('StartingBalanceType',None)
+    self.telephone=customer.get('Telephone',None)
+    self.fax=customer.get('Fax',None)
+    self.mobile=customer.get('Mobile',None)
+    self.notes=customer.get('Notes',None)
+    self.customFields=customer.get('CustomFields',None)
+    self.creditLimit=customer.get('CreditLimit',None)
+    self.startingBalanceType=custmer.get('StartingBalanceType',None)
     
   def __str__(self):
     return self.name
