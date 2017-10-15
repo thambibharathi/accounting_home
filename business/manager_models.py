@@ -45,21 +45,22 @@ class SupplierDetails:
     return self.name
 
 class SalesInvoice:
-   def __init__(self):
-      self.issueDate=None
-      self.reference=None
-      self.to=None
-      self.billingAddress=None
-      self.lines=None
-      self.dueDate=None
-      self.discount=None
-      self.amountsIncludeTax=None
-      self.roundingMethod=None
-      self.dueDateType=None
-      self.dueDateDays=None
-      self.latePaymentFees=None
-      self.latePaymentFeesPercentage=None
-      self.rounding=None
+   def __init__(self,salesinv={} ):
+      salesinv=salesinv
+      self.issueDate=salesinv.get('IssueDate',None)
+      self.reference=salesinv.get('Reference',None)
+      self.to=salesinv.get('To',None)
+      self.billingAddress=salesinv.get('BillingAddress',None)
+      self.lines=salesinv.get('Lines',None)
+      self.dueDate=salesinv.get('DueDate',None)
+      self.discount=salesinv.get('Discount',None)
+      self.amountsIncludeTax=salesinv.get('AmountsIncludeTax',None)
+      self.roundingMethod=salesinv.get('RoundingMethod',None)
+      self.dueDateType=salesinv.get('DueDateType',None)
+      self.dueDateDays=salesinv.get('DueDateDays',None)
+      self.latePaymentFees=salesinv.get('LatePaymentFees',None)
+      self.latePaymentFeesPercentage=salesinv.get('LatePaymentFeesPercentage',None)
+      self.rounding=salesinv.get('Rounding',None)
       
    def __str__(self):
       return self.reference
