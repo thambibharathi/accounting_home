@@ -28,17 +28,18 @@ class CustomerDetails:
     return self.name
  
 class SupplierDetails:
-  def __init__(self):
-    self.name=None
-    self.email=None
-    self.telephone=None
-    self.fax=None
-    self.mobile=None
-    self.notes=None
-    self.address=None
-    self.customFields=None
-    self.code=None
-    self.creditLimit=None
+  def __init__(self,supplier={}):
+    supplier=supplier
+    self.name=supplier.get('Name',None)
+    self.email=supplier.get('Email',None)
+    self.telephone=supplier.get('Telephone',None)
+    self.fax=supplier.get('Fax',None)
+    self.mobile=supplier.get('Mobile',None)
+    self.notes=supplier.get('Notes',None)
+    self.address=supplier.get('Address',None)
+    self.customFields=supplier.get('CustomFields',None)
+    self.code=supplier.get('Code',None)
+    self.creditLimit=supplier.get('CreditLimit',None)
     
   def __str__(self):
     return self.name
