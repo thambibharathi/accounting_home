@@ -8,7 +8,7 @@ class BusinessDetails:
     return self.tradingName
     
 class CustomerDetails:
-  def __init__(self,customer=None):
+  def __init__(self,customer={}):
     customer=customer
     self.name=customer.get('Name',None)
     self.billingAddress=customer.get('BillingAddress',None)
