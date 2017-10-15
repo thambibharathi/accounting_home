@@ -22,7 +22,7 @@ class CustomerDetails:
     self.notes=customer.get('Notes',None)
     self.customFields=customer.get('CustomFields',None)
     self.creditLimit=customer.get('CreditLimit',None)
-    self.startingBalanceType=custmer.get('StartingBalanceType',None)
+    self.startingBalanceType=customer.get('StartingBalanceType',None)
     
   def __str__(self):
     return self.name
