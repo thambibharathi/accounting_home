@@ -78,12 +78,10 @@ class SalesInvLine:
       self.trackingCode=line.get('TrackingCode',None)
       self.customFields=line.get('CustomFields',None)
       
-      @property
-      def amt_aft_discount(self):
-        if self.discount is not None:
-          return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )
-        
-        
+   @property
+   def amt_aft_discount(self):
+      if self.discount is not None:
+        return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )        
     
    def __str__(self):
       return self.description
