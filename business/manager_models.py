@@ -68,9 +68,10 @@ class SalesInvoice:
    
    @property 
    def lines_list(self):
-      
-    
-   
+      self.lines_list=[]
+      for line in self.lines:
+        self.lines_list.append(SalesInvLine(line))
+      return self.lines_list
 
 class SalesInvLine:
    def __init__(self,line,amountsIncludeTax=None):
