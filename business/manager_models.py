@@ -88,7 +88,9 @@ class SalesInvLine:
    @property
    def amt_aft_discount(self):
       if self.discount is not None:
-        return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )        
+        return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )
+      else :
+        return int(self.amount)
     
    def __str__(self):
       return self.description
