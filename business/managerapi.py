@@ -190,11 +190,11 @@ class manager_object:
         return self.index_objects('InventoryItem')
 
     def index_tabs(self):
-        '''Fetch all Tabs Selected '''
+        """Fetch all Tabs Selected """
         return self.index_objects('Tabs')
     
     def index_taxCodes(self):
-        ''' Fetch all custom tax codes''
+        """ Fetch all custom tax codes"""
         return self.index_objects('TaxCode')
         
 # Below, fetching objects from a collection
@@ -254,11 +254,11 @@ class manager_object:
         return self.get_objects(self.index_inventory())
 
     def get_tabs(self):
-        ''' Get all Tabs Selected'''
+        """ Get all Tabs Selected"""
         return self.get_objects(self.index_tabs())
     
     def get_taxCodes(self):
-        '''Get all Tax codes'''
+        """Get all Tax codes"""
         return self.get_objects(self.index_taxCodes())
    
 
