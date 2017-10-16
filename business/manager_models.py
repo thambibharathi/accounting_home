@@ -98,20 +98,28 @@ class SalesInvLine:
 
     
 class TaxCode:
-   def __init__(self):
-      self.name=None
-      self.components=None
-      self.taxRate=None
-      self.taxRateType=None
-  
+   def __init__(self,tax,code):
+      self.code=code
+      self.name=tax.get('Name',None)
+      self.components=tax.get('Components',None)
+      self.taxRate=tax.get('TaxRate',None)
+      self.taxRateType=tax.get('TaxRateType',None)
+   
+   @property  
+   def taxcomp_list(self):
+      taxcomp_list=[]
+      for taxcomp in self.components:
+        taxcomp_list.append(TaxCodeComponent(taxcomp))
+      return taxcomp_list
+    
    def __str__(self):
       return self.name
   
 class TaxCodeComponent:
-   def __init__(self):
-      self.name=None
-      self.rate=None
-      self.account=None
+   def __init__(self,taxcomp):
+      self.name=taxcomp.get('Name',None)
+      self.rate=taxcomp.get('Rate',None)
+      self.account=taxcomp.get('Account',None)
     
    def __str__(self):
       return self.name
