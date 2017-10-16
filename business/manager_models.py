@@ -66,20 +66,31 @@ class SalesInvoice:
       return self.reference
 
 class SalesInvLine:
-   def __init__(self):
+   def __init__(self,discount=0,amountsIncludeTax=None):
+      self.amountsIncludeTax=amountsIncludeTax
       self.description=None
       self.account=None
       self.taxCode=None
       self.qty=None
       self.item=None
       self.amount=None
-      self.discount=None
+      self.discount=discount
       self.trackingCode=None
       self.customFields=None
+      
+      
+      @property
+      def amt_aft_discount(self):
+        if self.discount is not None:
+          return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )
+        
+        
     
    def __str__(self):
       return self.description
-      
+    
+
+    
 class TaxCode:
    def __init__(self):
       self.name=None
