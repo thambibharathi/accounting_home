@@ -61,9 +61,16 @@ class SalesInvoice:
       self.latePaymentFees=salesinv.get('LatePaymentFees',None)
       self.latePaymentFeesPercentage=salesinv.get('LatePaymentFeesPercentage',None)
       self.rounding=salesinv.get('Rounding',None)
+      self.lines_list=[]
       
    def __str__(self):
       return self.reference
+   
+   @property 
+   def lines_list(self):
+      
+    
+   
 
 class SalesInvLine:
    def __init__(self,line,amountsIncludeTax=None):
