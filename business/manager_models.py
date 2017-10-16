@@ -66,7 +66,7 @@ class SalesInvoice:
       return self.reference
 
 class SalesInvLine:
-   def __init__(self,line,discount=0,amountsIncludeTax=None):
+   def __init__(self,line,amountsIncludeTax=None):
       self.amountsIncludeTax=amountsIncludeTax
       self.description=line.get('Description',None)
       self.account=line.get('Account',None)
