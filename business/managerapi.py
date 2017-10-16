@@ -192,6 +192,10 @@ class manager_object:
     def index_tabs(self):
         '''Fetch all Tabs Selected '''
         return self.index_objects('Tabs')
+    
+    def index_taxCodes(self):
+        ''' Fetch all custom tax codes''
+        return self.index_objects('TaxCode')
         
 # Below, fetching objects from a collection
     def get_object_thread(self, o_dict, index):
@@ -252,6 +256,11 @@ class manager_object:
     def get_tabs(self):
         ''' Get all Tabs Selected'''
         return self.get_objects(self.index_tabs())
+    
+    def get_taxCodes(self):
+        '''Get all Tax codes'''
+        return self.get_objects(self.index_taxCodes())
+   
 
     # def get_sales_inventory_items(self):
     #     """Get all the sales inventory Items."""
