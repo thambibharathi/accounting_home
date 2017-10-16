@@ -66,18 +66,17 @@ class SalesInvoice:
       return self.reference
 
 class SalesInvLine:
-   def __init__(self,discount=0,amountsIncludeTax=None):
+   def __init__(self,line,discount=0,amountsIncludeTax=None):
       self.amountsIncludeTax=amountsIncludeTax
-      self.description=None
-      self.account=None
-      self.taxCode=None
-      self.qty=None
-      self.item=None
-      self.amount=None
-      self.discount=discount
-      self.trackingCode=None
-      self.customFields=None
-      
+      self.description=line.get('Description',None)
+      self.account=line.get('Account',None)
+      self.taxCode=line.get('TaxCode',None)
+      self.qty=line.get('Qty',None)
+      self.item=line.get('Item',None)
+      self.amount=line.get('Amount',None)
+      self.discount=line.get('Discount',None)
+      self.trackingCode=line.get('TrackingCode',None)
+      self.customFields=line.get('CustomFields',None)
       
       @property
       def amt_aft_discount(self):
