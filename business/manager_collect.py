@@ -8,6 +8,10 @@ tcodes=m.get_taxCodes()
 customers=m.get_customers()
 #suppliers=m.get_suppliers()
 
+taxli=[]
+for tax in tcodes:
+  taxli.append(TaxCode(tcodes[tax],tax))
+
 sinvli=[] # List of sales invoice objects
 for sinvoice in sinvoices:
   sinvli.append(SalesInvoice(sinvoices[sinvoice]))
@@ -16,9 +20,7 @@ cli=[]  # List of customer objects
 for customer in customers:
   cli.append(CustomerDetails(customers[customer]))
   
-taxli=[]
-for tax in tcodes:
-  taxli.append(TaxCode(tcodes[tax],tax))
+
   
             
     
