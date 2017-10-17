@@ -72,7 +72,7 @@ class SalesInvoice:
         lines_list.append(SalesInvLine(line,self.amountsIncludeTax))
       return lines_list
    
-
+from business.manager_collect import get_tax_code
 class SalesInvLine:
    def __init__(self,line,amountsIncludeTax=None):
       self.amountsIncludeTax=amountsIncludeTax
