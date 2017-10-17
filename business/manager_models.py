@@ -1,3 +1,7 @@
+
+
+
+
 class BusinessDetails:
   def __init__(self):
     self.tradingName=tradingName
@@ -96,7 +100,7 @@ class SalesInvLine:
    @property
    def tax_val_list(self):
       li=[]
-      taxobj=get_tax_code(taxcode=self.taxCode)
+      taxobj=TaxCodesAll(taxli).get_tax_code(self.taxCode)
       if self.amountsIncludeTax is False:
         if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
@@ -158,7 +162,16 @@ class TaxCodeComponent:
       return self.name
     
 
-    
+class TaxCodesAll:
+  def __init__(self,taxli):
+    self.tax_code_list=taxli    
+  
+  def get_tax_code(taxcode):
+    for item in self.tax_code_list:
+      if item.code == taxcode:
+        return item
+        break
+    return None
     
    
     
