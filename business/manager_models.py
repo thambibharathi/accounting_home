@@ -78,7 +78,7 @@ class SalesInvoice:
       return lines_list
    
 class SalesInvLine:
-   def __init__(self,line,amountsIncludeTax=None,taxli=taxli):
+   def __init__(self,line,amountsIncludeTax=None,taxli=None):
       self.taxli=taxli #list of all taxobjects
       self.amountsIncludeTax=amountsIncludeTax
       self.description=line.get('Description',None)
