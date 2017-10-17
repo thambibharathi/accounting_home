@@ -14,7 +14,7 @@ for tax in tcodes:
 
 sinvli=[] # List of sales invoice objects
 for sinvoice in sinvoices:
-  sinvli.append(SalesInvoice(sinvoices[sinvoice]))
+  sinvli.append(SalesInvoice(sinvoices[sinvoice],taxli))
   
 cli=[]  # List of customer objects
 for customer in customers:
