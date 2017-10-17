@@ -137,13 +137,13 @@ class TaxCode:
    
    @property
    def taxcomp_exists(self):
-   ''' Check if Tax Components exist, If inbuilt taxes are used they will contain a list with empty dicts 
-   as below
-   "Components": [
-    {},
-    {}
+      ''' Check if Tax Components exist, If inbuilt taxes are used they will contain a list with empty dicts 
+      as below
+      "Components": [
+      {},
+      {}
                  ]
-   '''
+      '''
       if self.rate is not None:
         return False
       else:
