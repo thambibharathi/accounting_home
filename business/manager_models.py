@@ -69,13 +69,12 @@ class SalesInvoice:
    def lines_list(self):
       lines_list=[]
       for line in self.lines:
-        lines_list.append(SalesInvLine(line))
+        lines_list.append(SalesInvLine(line,self.amountsIncludeTax))
       return lines_list
    
 
 class SalesInvLine:
    def __init__(self,line,amountsIncludeTax=None):
-      self.taxcode=taxcode #contains all tax codes
       self.amountsIncludeTax=amountsIncludeTax
       self.description=line.get('Description',None)
       self.account=line.get('Account',None)
