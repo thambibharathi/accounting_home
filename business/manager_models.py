@@ -105,11 +105,11 @@ class SalesInvLine:
       if self.amountsIncludeTax is False:
         if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
-            taxdict={ 'taxName':None, 'taxVal':None,'taxRate':None}
-            taxdict['taxVal']=self.amt_aft_discount*item.rate
-            taxdict['taxName']=item.name
-            taxdict['taxRate']=item.rate
-            li.append(taxdict)
+            t=InvoiceTaxValue()
+            t.value=self.amt_aft_discount*item.rate
+            t.name=item.name
+            t.rate=item.rate
+            li.append(t)
       return li 
        
           
@@ -174,7 +174,14 @@ class TaxCodesAll:
         break
     return None
     
-   
+class InvoiceTaxValue:
+  def __int__(self,value=None,name=None,rate=None):
+    self.name=name
+    self.value=value
+    self.rate=rate
+    
+    
+    
     
  
     
