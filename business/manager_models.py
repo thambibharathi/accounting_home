@@ -49,8 +49,9 @@ class SupplierDetails:
     return self.name
 
 class SalesInvoice:
-   def __init__(self,salesinv={} ):
+   def __init__(self,salesinv={},taxli):
       salesinv=salesinv
+      self.taxli=taxli
       self.issueDate=salesinv.get('IssueDate',None)
       self.reference=salesinv.get('Reference',None)
       self.to=salesinv.get('To',None)
@@ -73,11 +74,12 @@ class SalesInvoice:
    def lines_list(self):
       lines_list=[]
       for line in self.lines:
-        lines_list.append(SalesInvLine(line,self.amountsIncludeTax))
+        lines_list.append(SalesInvLine(line,self.amountsIncludeTax,self.taxli))
       return lines_list
    
 class SalesInvLine:
-   def __init__(self,line,amountsIncludeTax=None):
+   def __init__(self,line,amountsIncludeTax=None,taxli=taxli):
+      self.taxli=taxli #list of all taxobjects
       self.amountsIncludeTax=amountsIncludeTax
       self.description=line.get('Description',None)
       self.account=line.get('Account',None)
@@ -99,7 +101,7 @@ class SalesInvLine:
    @property
    def tax_val_list(self):
       li=[]
-      taxobj=TaxCodesAll(taxli).get_tax_code(self.taxCode)
+      taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
       if self.amountsIncludeTax is False:
         if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
