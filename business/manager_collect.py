@@ -21,4 +21,10 @@ for tax in tcodes:
   taxli.append(TaxCode(tcodes[tax],tax))
   
              
-  
+def get_tax_code(taxli,code):
+  for item in taxli:
+    if item.code == code:
+      return item
+    else :
+      return None
+    
