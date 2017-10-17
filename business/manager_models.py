@@ -92,15 +92,11 @@ class SalesInvLine:
         return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )
       else :
         return int(self.amount)
-   
-   def get_tax_obj(self):
-       ''' Returns tax object based on self.taxcode'''
-       pass
   
    @property
    def tax_val_list(self):
       li=[]
-      taxobj=self.get_tax_obj
+      taxobj=get_tax_code(taxcode=self.taxCode)
       if self.amountsIncludeTax is False:
         if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
