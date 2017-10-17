@@ -104,7 +104,7 @@ class SalesInvLine:
       taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
       print("Taxobj",taxobj)
       print("taxobj.taxcomp_exists",taxobj.taxcomp_exists)
-      if self.amountsIncludeTax is False:
+      if self.amountsIncludeTax is None:
         if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
