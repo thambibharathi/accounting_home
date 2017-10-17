@@ -49,7 +49,7 @@ class SupplierDetails:
     return self.name
 
 class SalesInvoice:
-   def __init__(self,salesinv={},taxli):
+   def __init__(self,salesinv={},taxli=None):
       salesinv=salesinv
       self.taxli=taxli
       self.issueDate=salesinv.get('IssueDate',None)
