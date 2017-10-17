@@ -22,6 +22,8 @@ for tax in tcodes:
   
              
 def get_tax_code(taxli,code):
+  print(taxli)
+  print(code)
   for item in taxli:
     if item.code == code:
       return item
