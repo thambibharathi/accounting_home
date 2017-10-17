@@ -167,7 +167,7 @@ class TaxCodesAll:
   def __init__(self,taxli):
     self.tax_code_list=taxli    
   
-  def get_tax_code(taxcode):
+  def get_tax_code(self,taxcode):
     for item in self.tax_code_list:
       if item.code == taxcode:
         return item
