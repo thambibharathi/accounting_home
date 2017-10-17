@@ -95,8 +95,8 @@ class SalesInvLine:
         return int(self.amount)
    
    def get_tax_obj(self):
-   ''' Returns tax object based on self.taxcode'''
-      pass
+       ''' Returns tax object based on self.taxcode'''
+       pass
   
    @property
    def tax_val_list(self):
