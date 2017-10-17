@@ -106,10 +106,12 @@ class SalesInvLine:
         if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
-            t.value=self.amt_aft_discount*item.rate
+            t.value=(self.amt_aft_discount*item.rate)/100
             t.name=item.name
             t.rate=item.rate
             li.append(t)
+            print("li in the loop",li)
+      print("Before returning li",li)      
       return li 
        
           
