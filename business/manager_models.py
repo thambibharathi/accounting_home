@@ -94,26 +94,25 @@ class SalesInvLine:
       else :
         return int(self.amount)
    
-  def get_tax_obj(self):
-    ''' Returns tax object based on self.taxcode'''
-    pass
+   def get_tax_obj(self):
+   ''' Returns tax object based on self.taxcode'''
+      pass
   
-  @property
-  def tax_val_list(self):
-    li=[]
-    taxobj=self.get_tax_obj
-    if self.amountsIncludeTax is False:
-      if taxobj.taxcomp_exists is True:
-        for item in taxobj.taxcomp_list:
-          taxdict={ 'taxName':None, 'taxVal':None,'taxRate':None}
-          taxdict['taxVal']=self.amt_aft_discount*item.rate
-          taxdict['taxName']=item.name
-          taxdict['taxRate']=item.rate
-          li.append(taxdict)
-    return li 
+   @property
+   def tax_val_list(self):
+      li=[]
+      taxobj=self.get_tax_obj
+      if self.amountsIncludeTax is False:
+        if taxobj.taxcomp_exists is True:
+          for item in taxobj.taxcomp_list:
+            taxdict={ 'taxName':None, 'taxVal':None,'taxRate':None}
+            taxdict['taxVal']=self.amt_aft_discount*item.rate
+            taxdict['taxName']=item.name
+            taxdict['taxRate']=item.rate
+            li.append(taxdict)
+      return li 
        
           
-  
    def __str__(self):
       return self.description
     
