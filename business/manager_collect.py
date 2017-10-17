@@ -8,7 +8,9 @@ tcodes=m.get_taxCodes()
 customers=m.get_customers()
 #suppliers=m.get_suppliers()
 
-sinvoice_list=[]
+sinvli=[]
 for sinvoice in sinvoices:
-  sinvoice_list.append(sinvoices[sinvoice])
+  sinvli.append(SalesInvoice(sinvoices[sinvoice]))
+  
+  
   
