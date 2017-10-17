@@ -77,6 +77,16 @@ class SalesInvoice:
         lines_list.append(SalesInvLine(line,self.amountsIncludeTax,self.taxli))
       return lines_list
    
+   @property
+   def totalAmount(self):
+    ''' Sum of Invoice Lines for (amt_aft_discount + tax.val for each tax from tax_val_list'''
+      totalAmount=0
+      for invLine in self.lines_list:
+        totalAmount+=invLine.amt_aft_discount
+        for taxobj in invLine.tax_val_list:
+          totalAmount+=taxobj.value
+      return totalAmount
+      
 class SalesInvLine:
    def __init__(self,line,amountsIncludeTax=None,taxli=None):
       self.taxli=taxli #list of all taxobjects
