@@ -1,4 +1,5 @@
 from business.managerapi import manager_browser, manager_object, USER_NAME,PASSWORD,ROOT_URL
+from business.manager_models import *
 
 m=manager_object(ROOT_URL,USER_NAME,business='Demo Company Indian GST')
 
@@ -19,11 +20,5 @@ taxli=[]
 for tax in tcodes:
   taxli.append(TaxCode(tcodes[tax],tax))
   
-             
-def get_tax_code(taxcode,taxli=taxli):
-  for item in taxli:
-    if item.code == taxcode:
-      return item
-      break
-  return None
+            
     
