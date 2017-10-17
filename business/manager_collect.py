@@ -27,6 +27,7 @@ def get_tax_code(taxli,code):
   for item in taxli:
     if item.code == code:
       return item
+      break
     else :
       return None
     
