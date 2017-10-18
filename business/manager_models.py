@@ -157,17 +157,23 @@ class TaxCode:
    @property  
    def taxcomp_list(self):
       taxcomp_list=[]
-      for taxcomp in self.components:
-        taxcomp_list.append(TaxCodeComponent(taxcomp))
-      return taxcomp_list
+      if self.components is not None:
+        for taxcomp in self.components:
+          taxcomp_list.append(TaxCodeComponent(taxcomp))
+        return taxcomp_list
+      else :
+        return None
     
    @property
    def taxcomp_list_tax_rate_total(self):
       ''' Sum of the rate of the individual tax components in a TaxCode'''
       totalTax=0
-      for taxcomp in self.taxcomp_list:
-        totalTax += taxcomp.rate
-      return totalTax  
+      if self.taxcomp_list is not None:
+        for taxcomp in self.taxcomp_list:
+          totalTax += taxcomp.rate
+      else:
+        totalTax=self.rate
+      return totalTax
    
    @property
    def taxcomp_exists(self):
