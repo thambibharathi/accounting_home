@@ -93,6 +93,7 @@ class SalesInvoice:
       return totalAmount
       
 class SalesInvLine:
+   ''' A Object to store each line of a tax invoice. taxli is a list of all TaxCode objects'''
    def __init__(self,line,amountsIncludeTax=None,taxli=None):
       self.taxli=taxli #list of all taxobjects
       self.amountsIncludeTax=amountsIncludeTax
@@ -105,10 +106,27 @@ class SalesInvLine:
       self.discount=line.get('Discount',None)
       self.trackingCode=line.get('TrackingCode',None)
       self.customFields=line.get('CustomFields',None)
-      self.taxableValue=None
+      
+  @property
+  def taxableValue(self):
+    ''' Returns the taxable value depending of if tax is included or not.'''
+    if self.amountsIncludeTax is None:
+      return self.amt_aft_discount
+    else:
+      taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
+      amt_before_tax=self.amt_aft_discount / (((taxobj.taxcomp_list_tax_rate_total)/100) + 1)
+      return amt_before_tax
+      
+      
       
    @property
    def amt_aft_discount(self):
+      ''' Returns the amount after discount is applied. 
+      Note: When tax is included the unit rate shown in Invoice line amount is wrong.
+      E.G self.amount=100 Rs , tax applied multi rate 6% (5.23 Rs) and 3% (2.61 Rs) , Total tax 7.84 Rs, Discount 5% Rs 5,
+      Total Bill Amount after Tax is 95 Rs. Hence Actual Unit Price is 91.7 Rs After 5 Rs dicount its 87.15, Plus Tax 7.84
+      will give 95 Rs. There for the unit price is 91.7 Rs. Taxable Value is 87.15 Rs. 
+      '''
       if self.discount is not None:
         return int(self.amount) -  ((int(self.amount)*int(self.discount))/100 )
       else :
@@ -116,26 +134,44 @@ class SalesInvLine:
   
    @property
    def tax_val_list(self):
+      '''Contains a list of InvoiceTaxValue objects. They contain The tax value after rate
+      is applied on the taxable amount. 
+      taxobj contains a TaxCode object for the taxcode in the invoice line.
+      A check is made to see if its a Multi Rate TaxCode.
+      
+      '''
       li=[]
       taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
-      if self.amountsIncludeTax is None and taxobj.taxcomp_exists is False:
-          self.taxableValue=self.amt_aft_discount
+      if self.amountsIncludeTax is None : # if Amounts Do not Include Tax 
+        if taxobj.taxcomp_exists is True: #If Multiple tax rates exist store value of each rate in a list and return it.
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
             t.value=(self.amt_aft_discount*item.rate)/100
             t.name=item.name
             t.rate=item.rate
-            li.append(t)  
-      else:
-          amt_before_tax=self.amt_aft_discount/((taxobj.taxcomp_list_tax_rate_total)/100 + 1)
-          taxVal=self.amt_aft_discount-amt_before_tax
-          self.taxableValue=taxVal
-          for item in taxobj.taxcomp_list:
-            t=InvoiceTaxValue()
-            t.value=(amt_before_tax*item.rate)/100
-            t.name=item.name
-            t.rate=item.rate
             li.append(t)
+        else:                             # if only single tax rate exists, take the value from TaxCode object and store it in list and return
+            t=InvoiceTaxValue()
+            t.value=(self.amt_aft_discount*taxobj.rate)/100
+            t.name=taxobj.name
+            t.rate=taxobj.rate
+            li.append(t)
+      else:                                 #if Amounts  Include Tax then.
+          amt_before_tax=self.amt_aft_discount / (((taxobj.taxcomp_list_tax_rate_total)/100) + 1)
+          taxVal=self.amt_aft_discount-amt_before_tax
+          if taxobj.taxcomp_exists is True:    # if Multiple Tax Rates exisit
+            for item in taxobj.taxcomp_list:
+              t=InvoiceTaxValue()
+              t.value=(amt_before_tax*item.rate)/100
+              t.name=item.name
+              t.rate=item.rate
+              li.append(t)
+          else:
+              t=InvoiceTaxValue()               #if Only Single tax rate exists.
+              t.value=(amt_before_tax*taxobj.rate)/100
+              t.name=taxobj.name
+              t.rate=taxobj.rate
+              li.append(t)
       return li 
        
           
@@ -146,6 +182,9 @@ class SalesInvLine:
     
 class TaxCode:
    def __init__(self,tax,code):
+      ''' Stores a TaxCode and its data  Fields, code,name,components (for Multiple Rate Tax)
+      taxRate (Stating its a CustomRate),taxRateType (Stating MultiRate ), Tax account code
+      '''
       self.code=code
       self.name=tax.get('Name',None)
       self.components=tax.get('Components',None)
@@ -156,8 +195,11 @@ class TaxCode:
    
    @property  
    def taxcomp_list(self):
+      ''' Returns a list of Tax Component Objects for a TaxCode if Multi Rate Tax is used.
+      else returs None.
+      '''
       taxcomp_list=[]
-      if self.components is not None:
+      if self.taxcomp_exists is True:
         for taxcomp in self.components:
           taxcomp_list.append(TaxCodeComponent(taxcomp))
         return taxcomp_list
@@ -166,9 +208,13 @@ class TaxCode:
     
    @property
    def taxcomp_list_tax_rate_total(self):
-      ''' Sum of the rate of the individual tax components in a TaxCode'''
+      ''' Sum of the rate of the individual tax components in a TaxCode
+      Also checks if Tax Component existis. If it does add all the tax rates
+      from each component. Else since a single tax rate is applicable
+      returns the tax rate from TaxCode.
+      '''
       totalTax=0
-      if self.taxcomp_list is not None:
+      if self.taxcomp_exists is True:
         for taxcomp in self.taxcomp_list:
           totalTax += taxcomp.rate
       else:
@@ -183,6 +229,8 @@ class TaxCode:
       {},
       {}
                  ]
+      Even if the tax is not a MultipleRate TaxCode object blank components are generated. Hence
+      we use Rate in the TaxCode object. If no rate exisits its a MultipleComponent Tax and will return True.
       '''
       if self.rate is not None:
         return False
@@ -194,6 +242,7 @@ class TaxCode:
       return self.name
   
 class TaxCodeComponent:
+  ''' An Object to Store Tax components when MultipleRate Tax is used'''
    def __init__(self,taxcomp):
       self.name=taxcomp.get('Name',None)
       self.rate=taxcomp.get('Rate',None)
@@ -204,10 +253,12 @@ class TaxCodeComponent:
     
 
 class TaxCodesAll:
+  '''Stores A List of all TaxCode objsts when they are provided'''
   def __init__(self,taxli):
     self.tax_code_list=taxli    
   
   def get_tax_code(self,taxcode):
+    ''' Returns a TaxCode object when a taxcode string is provided'''
     for item in self.tax_code_list:
       if item.code == taxcode:
         return item
@@ -215,6 +266,7 @@ class TaxCodesAll:
     return None
     
 class InvoiceTaxValue:
+  ''' Stors the Tax Name, Rate and Value of the tax applied on the Taxable Amount '''
   def __int__(self,value=None,name=None,rate=None):
     self.name=name
     self.value=value
