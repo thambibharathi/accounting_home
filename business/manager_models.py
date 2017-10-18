@@ -82,10 +82,14 @@ class SalesInvoice:
    def totalAmount(self):
       ''' Sum of Invoice Lines for (amt_aft_discount + tax.val for each tax from tax_val_list'''
       totalAmount=0
-      for invLine in self.lines_list:
-        totalAmount+=invLine.amt_aft_discount
-        for taxobj in invLine.tax_val_list:
-          totalAmount+=taxobj.value
+      if amounts amountsIncludeTax is None:  
+        for invLine in self.lines_list:
+          totalAmount+=invLine.amt_aft_discount
+          for taxobj in invLine.tax_val_list:
+            totalAmount+=taxobj.value
+      else:
+        for invLine in self.lines_list:
+          totalAmount+=invLine.amount
       return totalAmount
       
 class SalesInvLine:
