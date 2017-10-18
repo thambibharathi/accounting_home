@@ -112,14 +112,22 @@ class SalesInvLine:
    def tax_val_list(self):
       li=[]
       taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
-      if self.amountsIncludeTax is None:
-        if taxobj.taxcomp_exists is True:
+      if self.amountsIncludeTax is None and if taxobj.taxcomp_exists is True:
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
             t.value=(self.amt_aft_discount*item.rate)/100
             t.name=item.name
             t.rate=item.rate
-            li.append(t)    
+            li.append(t)  
+      else:
+          amt_before_tax=self.amt_aft_discount/((taxobj.taxcomp_list_tax_rate_total)/100 + 1)
+          taxVal=self.amt_aft_discount-amt_before_tax
+          for item in taxobj.taxcomp_list:
+            t=InvoiceTaxValue()
+            t.value=(amt_before_tax*item.rate)/100
+            t.name=item.name
+            t.rate=item.rate
+            li.append(t)
       return li 
        
           
@@ -144,6 +152,14 @@ class TaxCode:
       for taxcomp in self.components:
         taxcomp_list.append(TaxCodeComponent(taxcomp))
       return taxcomp_list
+    
+   @property
+   def taxcomp_list_tax_rate_total(self):
+      ''' Sum of the rate of the individual tax components in a TaxCode'''
+      totalTax=[]
+      for taxcomp in self.taxcomp_list:
+        totalTax += taxcomp.rate
+      return totalTax  
    
    @property
    def taxcomp_exists(self):
