@@ -242,7 +242,7 @@ class TaxCode:
       return self.name
   
 class TaxCodeComponent:
-  ''' An Object to Store Tax components when MultipleRate Tax is used'''
+   ''' An Object to Store Tax components when MultipleRate Tax is used'''
    def __init__(self,taxcomp):
       self.name=taxcomp.get('Name',None)
       self.rate=taxcomp.get('Rate',None)
