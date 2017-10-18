@@ -107,15 +107,15 @@ class SalesInvLine:
       self.trackingCode=line.get('TrackingCode',None)
       self.customFields=line.get('CustomFields',None)
       
-  @property
-  def taxableValue(self):
-    ''' Returns the taxable value depending of if tax is included or not.'''
-    if self.amountsIncludeTax is None:
-      return self.amt_aft_discount
-    else:
-      taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
-      amt_before_tax=self.amt_aft_discount / (((taxobj.taxcomp_list_tax_rate_total)/100) + 1)
-      return amt_before_tax
+   @property
+   def taxableValue(self):
+      ''' Returns the taxable value depending of if tax is included or not.'''
+      if self.amountsIncludeTax is None:
+        return self.amt_aft_discount
+      else:
+        taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
+        amt_before_tax=self.amt_aft_discount / (((taxobj.taxcomp_list_tax_rate_total)/100) + 1)
+        return amt_before_tax
       
       
       
