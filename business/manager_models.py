@@ -89,7 +89,7 @@ class SalesInvoice:
             totalAmount+=taxobj.value
       else:
         for invLine in self.lines_list:
-          totalAmount+=invLine.amount
+          totalAmount+=invLine.amt_aft_discount
       return totalAmount
       
 class SalesInvLine:
