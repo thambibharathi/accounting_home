@@ -66,6 +66,7 @@ class SalesInvoice:
       self.latePaymentFees=salesinv.get('LatePaymentFees',None)
       self.latePaymentFeesPercentage=salesinv.get('LatePaymentFeesPercentage',None)
       self.rounding=salesinv.get('Rounding',None)
+   
       
    def __str__(self):
       return self.reference
@@ -100,6 +101,7 @@ class SalesInvLine:
       self.discount=line.get('Discount',None)
       self.trackingCode=line.get('TrackingCode',None)
       self.customFields=line.get('CustomFields',None)
+      self.taxableValue=None
       
    @property
    def amt_aft_discount(self):
@@ -113,6 +115,7 @@ class SalesInvLine:
       li=[]
       taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
       if self.amountsIncludeTax is None and taxobj.taxcomp_exists is True:
+          self.taxableValue=self.amt_aft_discount
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
             t.value=(self.amt_aft_discount*item.rate)/100
@@ -122,6 +125,7 @@ class SalesInvLine:
       else:
           amt_before_tax=self.amt_aft_discount/((taxobj.taxcomp_list_tax_rate_total)/100 + 1)
           taxVal=self.amt_aft_discount-amt_before_tax
+          self.taxableValue=taxVal
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
             t.value=(amt_before_tax*item.rate)/100
