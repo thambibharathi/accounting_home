@@ -118,7 +118,7 @@ class SalesInvLine:
    def tax_val_list(self):
       li=[]
       taxobj=TaxCodesAll(self.taxli).get_tax_code(self.taxCode)
-      if self.amountsIncludeTax is None and taxobj.taxcomp_exists is True:
+      if self.amountsIncludeTax is None and taxobj.taxcomp_exists is False:
           self.taxableValue=self.amt_aft_discount
           for item in taxobj.taxcomp_list:
             t=InvoiceTaxValue()
