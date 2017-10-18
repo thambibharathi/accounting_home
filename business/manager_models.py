@@ -156,7 +156,7 @@ class TaxCode:
    @property
    def taxcomp_list_tax_rate_total(self):
       ''' Sum of the rate of the individual tax components in a TaxCode'''
-      totalTax=[]
+      totalTax=0
       for taxcomp in self.taxcomp_list:
         totalTax += taxcomp.rate
       return totalTax  
