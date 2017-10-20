@@ -28,6 +28,10 @@ class CustomerDetails:
     self.creditLimit=customer.get('CreditLimit',None)
     self.startingBalanceType=customer.get('StartingBalanceType',None)
     
+  @property
+  def customfield_list(self):
+    pass
+    
   def __str__(self):
     return self.name
  
@@ -274,6 +278,34 @@ class InvoiceTaxValue:
     
   def __str__(self):
     return self.name+' '+str(self.rate)
+  
+  
+class CustomField:
+  ''' Stores information of a custom Field'''
+  def __init__(self,customfield={},code):
+    self.code=code
+    self.name=customfield.get('Name',None)
+    self.type=customfield.get('Type',None)
+    self.FieldType=customfield.get('Type',None)
+    self.dropdownvalues=customfield.get('DropdownValues',None)
+    
+  def __str__(self):
+    return self.name
+    
+class CustomFieldsALL:
+  ''' Stores a list of custom field objects. Returns a custom
+  custom field when code is supplied
+  '''
+  def __init__(self,custom_field_list):
+    self.custom_field_list=custom_field_list
+    
+  def get_custom_field(self,code):
+    for item in self.custom_field_list:
+      if item.code==code:
+        return item
+        break
+    return None 
+      
     
 
  
