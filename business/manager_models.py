@@ -30,7 +30,12 @@ class CustomerDetails:
     
   @property
   def customfield_list(self):
-    pass
+    li=[]
+    for item in self.customFields:
+      pass
+      
+    
+      
     
   def __str__(self):
     return self.name
@@ -285,6 +290,7 @@ class CustomField:
   def __init__(self,customfield={},code):
     self.code=code
     self.name=customfield.get('Name',None)
+    self.value=None
     self.type=customfield.get('Type',None)
     self.FieldType=customfield.get('Type',None)
     self.dropdownvalues=customfield.get('DropdownValues',None)
@@ -292,7 +298,7 @@ class CustomField:
   def __str__(self):
     return self.name
     
-class CustomFieldsALL:
+class CustomFieldsAll:
   ''' Stores a list of custom field objects. Returns a custom
   custom field when code is supplied
   '''
