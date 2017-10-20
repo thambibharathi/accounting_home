@@ -196,6 +196,10 @@ class manager_object:
     def index_taxCodes(self):
         """ Fetch all custom tax codes"""
         return self.index_objects('TaxCode')
+    
+    def index_suppliers(self):
+        """ Fetch all the Supplier Indexes"""
+        return self.index_objects('Supplier')
         
 # Below, fetching objects from a collection
     def get_object_thread(self, o_dict, index):
@@ -260,6 +264,10 @@ class manager_object:
     def get_taxCodes(self):
         """Get all Tax codes"""
         return self.get_objects(self.index_taxCodes())
+    
+    def get_supplier(self):
+        ''' Get All Suppliers'''
+        return self.get_objects(self.index_suppliers())
    
 
     # def get_sales_inventory_items(self):
