@@ -274,7 +274,7 @@ class manager_object:
         return self.get_objects(self.index_suppliers())
     
     def get_customfields(self):
-       ''' Get all Custom field details '''
+        ''' Get all Custom field details '''
         return self.get_objects(self.index_customfield())
 
     # def get_sales_inventory_items(self):
