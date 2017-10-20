@@ -8,7 +8,7 @@ tcodes=m.get_taxCodes()
 customers=m.get_customers()
 #suppliers=m.get_suppliers()
 
-taxli=[]
+taxli=[] #List of TaxCode objects
 for tax in tcodes:
   taxli.append(TaxCode(tcodes[tax],tax))
 
