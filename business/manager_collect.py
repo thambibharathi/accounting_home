@@ -6,6 +6,7 @@ m=manager_object(ROOT_URL,USER_NAME,business='Demo Company Indian GST')
 sinvoices=m.get_sales_invoices()
 tcodes=m.get_taxCodes()
 customers=m.get_customers()
+customFields=m.get_customfields()
 #suppliers=m.get_suppliers()
 
 taxli=[] #List of TaxCode objects
@@ -21,6 +22,8 @@ for customer in customers:
   cli.append(CustomerDetails(customers[customer]))
   
 
-  
+custom_field_list=[] #List of Custom Fields.
+for custom_field in customFields:
+  custom_field_list.append(CustomField(customFields[custom_field]))
             
     
