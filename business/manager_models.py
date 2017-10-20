@@ -275,7 +275,6 @@ class InvoiceTaxValue:
   def __str__(self):
     return self.name+' '+str(self.rate)
     
-    
-    
+
  
     
