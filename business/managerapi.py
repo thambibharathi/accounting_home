@@ -200,6 +200,10 @@ class manager_object:
     def index_suppliers(self):
         """ Fetch all the Supplier Indexes"""
         return self.index_objects('Supplier')
+    
+    def index_customfield(self):
+        ''' Fetch all Custom Field Indexes'''
+        return self.index_objects('CustomField')
         
 # Below, fetching objects from a collection
     def get_object_thread(self, o_dict, index):
@@ -268,7 +272,10 @@ class manager_object:
     def get_supplier(self):
         ''' Get All Suppliers'''
         return self.get_objects(self.index_suppliers())
-   
+    
+   def get_customfields(self):
+       ''' Get all Custom field details '''
+        return self.get_objects(self.index_customfield())
 
     # def get_sales_inventory_items(self):
     #     """Get all the sales inventory Items."""
