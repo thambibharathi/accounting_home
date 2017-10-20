@@ -12,8 +12,9 @@ class BusinessDetails:
     return self.tradingName
     
 class CustomerDetails:
-  def __init__(self,customer={}):
+  def __init__(self,customer={},custom_field_list):
     customer=customer
+    self.custom_field_list=custom_field_list
     self.name=customer.get('Name',None)
     self.billingAddress=customer.get('BillingAddress',None)
     self.email=customer.get('Email',None)
@@ -32,10 +33,10 @@ class CustomerDetails:
   def customfield_list(self):
     li=[]
     for item in self.customFields:
-      pass
-      
-    
-      
+      c=CustomFieldsAll(self.custom_field_list).get_custom_field(item)
+      c.value=self.customFields[item]
+      li.append(c)
+    return li      
     
   def __str__(self):
     return self.name
