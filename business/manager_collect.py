@@ -19,7 +19,7 @@ for sinvoice in sinvoices:
   
 custom_field_list=[] #List of Custom Fields.
 for custom_field in customFields:
-  custom_field_list.append(CustomField(customFields[custom_field]))  
+  custom_field_list.append(CustomField(customFields[custom_field],custom_field))  
   
 cli=[]  # List of customer objects
 for customer in customers:
