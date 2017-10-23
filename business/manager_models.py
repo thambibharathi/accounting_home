@@ -12,7 +12,7 @@ class BusinessDetails:
     return self.tradingName
     
 class CustomerDetails:
-  def __init__(self,customer={},custom_field_list):
+  def __init__(self,customer={},custom_field_list=None):
     customer=customer
     self.custom_field_list=custom_field_list
     self.name=customer.get('Name',None)
