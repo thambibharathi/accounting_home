@@ -288,7 +288,7 @@ class InvoiceTaxValue:
   
 class CustomField:
   ''' Stores information of a custom Field'''
-  def __init__(self,customfield={},code):
+  def __init__(self,customfield={},code=None):
     self.code=code
     self.name=customfield.get('Name',None)
     self.value=None
