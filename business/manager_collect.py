@@ -17,13 +17,15 @@ sinvli=[] # List of sales invoice objects
 for sinvoice in sinvoices:
   sinvli.append(SalesInvoice(sinvoices[sinvoice],taxli))
   
-cli=[]  # List of customer objects
-for customer in customers:
-  cli.append(CustomerDetails(customers[customer]))
-  
-
 custom_field_list=[] #List of Custom Fields.
 for custom_field in customFields:
-  custom_field_list.append(CustomField(customFields[custom_field]))
+  custom_field_list.append(CustomField(customFields[custom_field]))  
+  
+cli=[]  # List of customer objects
+for customer in customers:
+  cli.append(CustomerDetails(customers[customer],custom_field_list))
+  
+
+
             
     
